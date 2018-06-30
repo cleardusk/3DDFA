@@ -46,9 +46,8 @@ def _reconstruct_vertex(param, whitening=True, dense=False):
     return vertex
 
 
-def extract_param(checkpoint_fp, root='', filelists=None, arch='mobilenet_1', num_classes=62, device_ids=[0, 1],
+def extract_param(checkpoint_fp, root='', filelists=None, arch='mobilenet_1', num_classes=62, device_ids=[0],
                   batch_size=128, num_workers=4):
-    """params_initial_fp controls the cascade style"""
     map_location = {f'cuda:{i}': 'cuda:0' for i in range(8)}
     checkpoint = torch.load(checkpoint_fp, map_location=map_location)['state_dict']
     torch.cuda.set_device(device_ids[0])
