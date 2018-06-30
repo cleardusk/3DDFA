@@ -105,7 +105,7 @@ def benchmark_aflw2000_params(params):
 
 def benchmark_pipeline():
     device_ids = [0]
-    checkpoint_fp = 'models/wpdc_vdc.pth.tar'
+    checkpoint_fp = 'models/phase1_wpdc_vdc.pth.tar'
     arch = 'mobilenet_1'
 
     def aflw():
