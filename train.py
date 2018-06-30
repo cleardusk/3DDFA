@@ -126,34 +126,34 @@ def train(train_loader, model, criterion, optimizer, epoch):
         target = target.cuda(non_blocking=True)
         output = model(input)
 
-    data_time.update(time.time() - end)
+        data_time.update(time.time() - end)
 
-    if args.loss.lower() == 'vdc':
-        loss = criterion(output, target)
-    elif args.loss.lower() == 'wpdc':
-        loss = criterion(output, target)
-    elif args.loss.lower() == 'pdc':
-        loss = criterion(output, target)
-    else:
-        raise Exception(f'Unknown loss {args.loss}')
+        if args.loss.lower() == 'vdc':
+            loss = criterion(output, target)
+        elif args.loss.lower() == 'wpdc':
+            loss = criterion(output, target)
+        elif args.loss.lower() == 'pdc':
+            loss = criterion(output, target)
+        else:
+            raise Exception(f'Unknown loss {args.loss}')
 
-    losses.update(loss.item(), input.size(0))
-    # compute gradient and do SGD step
-    optimizer.zero_grad()
-    loss.backward()
-    optimizer.step()
+        losses.update(loss.item(), input.size(0))
+        # compute gradient and do SGD step
+        optimizer.zero_grad()
+        loss.backward()
+        optimizer.step()
 
-    # measure elapsed time
-    batch_time.update(time.time() - end)
-    end = time.time()
+        # measure elapsed time
+        batch_time.update(time.time() - end)
+        end = time.time()
 
-    # log
-    if i % args.print_freq == 0:
-        logging.info(f'Epoch: [{epoch}][{i}/{len(train_loader)}]\t'
-                     f'LR: {lr:8f}\t'
-                     f'Time {batch_time.val:.3f} ({batch_time.avg:.3f})\t'
-                     # f'Data {data_time.val:.3f} ({data_time.avg:.3f})\t'
-                     f'Loss {losses.val:.4f} ({losses.avg:.4f})')
+        # log
+        if i % args.print_freq == 0:
+            logging.info(f'Epoch: [{epoch}][{i}/{len(train_loader)}]\t'
+                         f'LR: {lr:8f}\t'
+                         f'Time {batch_time.val:.3f} ({batch_time.avg:.3f})\t'
+                         # f'Data {data_time.val:.3f} ({data_time.avg:.3f})\t'
+                         f'Loss {losses.val:.4f} ({losses.avg:.4f})')
 
 
 def validate(val_loader, model, criterion, epoch):
@@ -170,11 +170,12 @@ def validate(val_loader, model, criterion, epoch):
 
         loss = criterion(output, target)
         losses.append(loss)
-    elapse = time.time() - end
-    loss = np.mean(losses)
-    logging.info(f'Val: [{epoch}][{len(val_loader)}]\t'
-                 f'Loss {loss:.4f}\t'
-                 f'Time {elapse:.3f}')
+
+        elapse = time.time() - end
+        loss = np.mean(losses)
+        logging.info(f'Val: [{epoch}][{len(val_loader)}]\t'
+                     f'Loss {loss:.4f}\t'
+                     f'Time {elapse:.3f}')
 
 
 def main():

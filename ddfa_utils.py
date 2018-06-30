@@ -100,3 +100,21 @@ class DDFADataset(data.Dataset):
 
     def __len__(self):
         return len(self.lines)
+
+
+class DDFATestDataset(data.Dataset):
+    def __init__(self, filelists, root='', transform=None):
+        self.root = root
+        self.transform = transform
+        self.lines = Path(filelists).read_text().strip().split('\n')
+
+    def __getitem__(self, index):
+        path = osp.join(self.root, self.lines[index])
+        img = img_loader(path)
+
+        if self.transform is not None:
+            img = self.transform(img)
+        return img
+
+    def __len__(self):
+        return len(self.lines)
