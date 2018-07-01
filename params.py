@@ -5,7 +5,12 @@ import os.path as osp
 import numpy as np
 from io_utils import _load, _numpy_to_cuda, _numpy_to_tensor, _load_gpu
 
-d = 'train.configs'
+
+def make_abs_path(d):
+    return osp.join(osp.dirname(osp.realpath(__file__)), d)
+
+
+d = make_abs_path('train.configs')
 keypoints = _load(osp.join(d, 'keypoints_sim.npy'))
 w_shp = _load(osp.join(d, 'w_shp_sim.npy'))
 w_exp = _load(osp.join(d, 'w_exp_sim.npy'))  # simplified version

@@ -17,6 +17,7 @@ from benchmark_aflw import ana as ana_aflw
 
 from ddfa_utils import ToTensorGjz, NormalizeGjz, DDFATestDataset
 from params import *
+import argparse
 
 
 def _reconstruct_vertex(param, whitening=True, dense=False):
@@ -75,7 +76,7 @@ def extract_param(checkpoint_fp, root='', filelists=None, arch='mobilenet_1', nu
                 outputs.append(param_prediction)
         outputs = np.array(outputs, dtype=np.float32)
 
-    print(f'{time.time() - end: .3f}s')
+    print(f'Extracting params take {time.time() - end: .3f}s')
     return outputs
 
 
@@ -103,10 +104,8 @@ def benchmark_aflw2000_params(params):
     return _benchmark_aflw2000(outputs)
 
 
-def benchmark_pipeline():
+def benchmark_pipeline(arch, checkpoint_fp):
     device_ids = [0]
-    checkpoint_fp = 'models/phase1_wpdc_vdc.pth.tar'
-    arch = 'mobilenet_1'
 
     def aflw():
         params = extract_param(
@@ -135,7 +134,12 @@ def benchmark_pipeline():
 
 
 def main():
-    benchmark_pipeline()
+    parser = argparse.ArgumentParser(description='3DDFA Benchmark')
+    parser.add_argument('--arch', default='mobilenet_1', type=str)
+    parser.add_argument('-c', '--checkpoint-fp', default='models/phase1_wpdc_vdc.pth.tar', type=str)
+    args = parser.parse_args()
+
+    benchmark_pipeline(args.arch, args.checkpoint_fp)
 
 
 if __name__ == '__main__':

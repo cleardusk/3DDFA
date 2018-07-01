@@ -1,8 +1,6 @@
 #!/usr/bin/env python3
 # coding: utf-8
 
-import sys
-import os
 import os.path as osp
 from pathlib import Path
 import numpy as np
@@ -34,7 +32,7 @@ def parse_args():
     parser.add_argument('-j', '--workers', default=6, type=int)
     parser.add_argument('--epochs', default=40, type=int)
     parser.add_argument('--start-epoch', default=1, type=int)
-    parser.add_argument('-b', '--batch-size', default=128)
+    parser.add_argument('-b', '--batch-size', default=128, type=int)
     parser.add_argument('-vb', '--val-batch-size', default=32, type=int)
     parser.add_argument('--base-lr', '--learning-rate', default=0.001, type=float)
     parser.add_argument('--momentum', default=0.9, type=float, metavar='M',
@@ -58,12 +56,13 @@ def parse_args():
     parser.add_argument('--frozen', default='false', type=str2bool)
     parser.add_argument('--milestones', default='15,25,30', type=str)
     parser.add_argument('--task', default='all', type=str)
+    parser.add_argument('--test_initial', default='false', type=str2bool)
     parser.add_argument('--warmup', default=-1, type=int)
     parser.add_argument('--param-fp-train',
-                        default='configs/param_all_norm.pkl',
+                        default='',
                         type=str)
     parser.add_argument('--param-fp-val',
-                        default='configs/param_all_norm_val.pkl')
+                        default='')
     parser.add_argument('--opt-style', default='resample', type=str)  # resample
     parser.add_argument('--resample-num', default=132, type=int)
     parser.add_argument('--loss', default='vdc', type=str)
@@ -168,8 +167,8 @@ def validate(val_loader, model, criterion, epoch):
             target = target.cuda(non_blocking=True)
             output = model(input)
 
-        loss = criterion(output, target)
-        losses.append(loss)
+            loss = criterion(output, target)
+            losses.append(loss)
 
         elapse = time.time() - end
         loss = np.mean(losses)
@@ -274,7 +273,6 @@ def main():
             filename
         )
 
-        # [todo:] add evaluation for AFLW and ALFW2000
         validate(val_loader, model, criterion, epoch)
 
 
