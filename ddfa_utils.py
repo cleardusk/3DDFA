@@ -11,6 +11,34 @@ import cv2
 import pickle
 import argparse
 from io_utils import _numpy_to_tensor, _load_cpu, _load_gpu
+from params import *
+
+
+def reconstruct_vertex(param, whitening=True, dense=False):
+    """Whitening param -> 3d vertex, based on the 3dmm param: u_base, w_shp, w_exp"""
+    if len(param) == 12:
+        param = np.concatenate((param, [0] * 50))
+    if whitening:
+        if len(param) == 62:
+            param = param * param_std + param_mean
+        else:
+            param = np.concatenate((param[:11], [0], param[11:]))
+            param = param * param_std + param_mean
+    p_ = param[:12].reshape(3, -1)
+    p = p_[:, :3]
+    offset = p_[:, -1].reshape(3, 1)
+    alpha_shp = param[12:52].reshape(-1, 1)
+    alpha_exp = param[52:].reshape(-1, 1)
+
+    if dense:
+        vertex = p @ (u + w_shp @ alpha_shp + w_exp @ alpha_exp).reshape(3, -1, order='F') + offset
+    else:
+        """For 68 pts"""
+        vertex = p @ (u_base + w_shp_base @ alpha_shp + w_exp_base @ alpha_exp).reshape(3, -1, order='F') + offset
+        # for landmarks
+        vertex[1, :] = std_size + 1 - vertex[1, :]
+
+    return vertex
 
 
 def img_loader(path):
