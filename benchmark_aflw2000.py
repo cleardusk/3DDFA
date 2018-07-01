@@ -54,6 +54,16 @@ def ana(nme_list):
     return mean_nme_1, mean_nme_2, mean_nme_3, mean, std
 
 
+def convert_to_ori(lms, i):
+    std_size = 120
+    sx, sy, ex, ey = roi_boxs[i]
+    scale_x = (ex - sx) / std_size
+    scale_y = (ey - sy) / std_size
+    lms[0, :] = lms[0, :] * scale_x + sx
+    lms[1, :] = lms[1, :] * scale_y + sy
+    return lms
+
+
 def calc_nme(pts68_fit_all, option='ori'):
     if option == 'ori':
         pts68_all = pts68_all_ori

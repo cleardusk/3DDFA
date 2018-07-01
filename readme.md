@@ -1,9 +1,17 @@
 # Face Alignment in Full Pose Range: A 3D Total Solution
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
 ## Introduction
 The pytorch implementation of paper [Face Alignment in Full Pose Range: A 3D Total Solution](https://arxiv.org/abs/1804.01005).
+
+<p align="center">
+  <img src="imgs/landmark_3d.jpg" alt="Landmark 3D" width="800px">
+</p>
+
+<p align="center">
+  <img src="imgs/vertex_3d.jpg" alt="Vertex 3D" width="800px">
+</p>
 
 ## Citation
     @article{zhu2017face,
