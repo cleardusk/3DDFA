@@ -6,11 +6,11 @@
 The pytorch implementation of paper [Face Alignment in Full Pose Range: A 3D Total Solution](https://arxiv.org/abs/1804.01005).
 
 <p align="center">
-  <img src="imgs/landmark_3d.jpg" alt="Landmark 3D" width="800px">
+  <img src="imgs/landmark_3d.jpg" alt="Landmark 3D" width="850px">
 </p>
 
 <p align="center">
-  <img src="imgs/vertex_3d.jpg" alt="Vertex 3D" width="800px">
+  <img src="imgs/vertex_3d.jpg" alt="Vertex 3D" width="750px">
 </p>
 
 ## Citation
