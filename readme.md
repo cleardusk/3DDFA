@@ -6,7 +6,7 @@
 The pytorch implementation of paper [Face Alignment in Full Pose Range: A 3D Total Solution](https://arxiv.org/abs/1804.01005).
 
 <p align="center">
-  <img src="imgs/landmark_3d.jpg" alt="Landmark 3D" width="850px">
+  <img src="imgs/landmark_3d.jpg" alt="Landmark 3D" width="1000px">
 </p>
 
 <p align="center">
