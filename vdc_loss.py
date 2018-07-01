@@ -1,32 +1,13 @@
 #!/usr/bin/env python3
 # coding: utf-8
 
-import sys
-import os.path as osp
-from pathlib import Path
-import numpy as np
 import torch
 import torch.nn as nn
-import torch.cuda as cuda
 from io_utils import _load, _numpy_to_cuda, _numpy_to_tensor
-import time
-import random
 from params import *
 
-# d = 'configs'
-# keypoints = _load(osp.join(d, 'keypoints_sim.npy'))
-# w_shp = _load(osp.join(d, 'w_shp_sim.npy'))
-# w_exp = _load(osp.join(d, 'w_exp_sim.npy'))  # simplified version
-# meta = _load(osp.join(d, 'param_whitening.pkl'))
-#
-# param_mean = meta.get('param_mean')
-# param_std = meta.get('param_std')
-# u_shp = _load(osp.join(d, 'u_shp.npy'))
-# u_exp = _load(osp.join(d, 'u_exp.npy'))
-# u = u_shp + u_exp
-
-# _to_tensor = _numpy_to_tensor  # cpu
 _to_tensor = _numpy_to_cuda  # gpu
+
 
 
 def _parse_param_batch(param):
