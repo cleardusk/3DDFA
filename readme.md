@@ -46,5 +46,3 @@ The performances of pre-trained models are shown below. In the first stage, the 
 | phase1_wpdc.pth.tar | 6.348±0.929 | 4.759±0.996 |
 | phase1_wpdc_vdc.pth.tar | **5.401±0.754** | **4.252±0.976** |
 
-## Training
-[todo]
