@@ -8,13 +8,13 @@ LOG_FILE="${LOG_DIR}/${LOG_ALIAS}_`date +'%Y-%m-%d_%H:%M.%S'`.log"
 #echo $LOG_FILE
 
 ./train.py --arch="mobilenet_1" \
-      --start-epoch=1 \
-	  --loss=wpdc \
-	  --snapshot="snapshot/phase1_wpdc" \
-	  --param-fp-train='../train.configs/param_all_norm.pkl' \
-	  --param-fp-val='../train.configs/param_all_norm_val.pkl' \
-	  --warmup=5 \
-	  --opt-style=resample \
+    --start-epoch=1 \
+    --loss=wpdc \
+    --snapshot="snapshot/phase1_wpdc" \
+    --param-fp-train='../train.configs/param_all_norm.pkl' \
+    --param-fp-val='../train.configs/param_all_norm_val.pkl' \
+    --warmup=5 \
+    --opt-style=resample \
     --resample-num=232 \
     --batch-size=512 \
     --base-lr=0.02 \
