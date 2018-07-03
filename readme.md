@@ -7,7 +7,7 @@ This repo holds the pytorch implementation of paper [Face Alignment in Full Pose
 release the pre-trained first-stage pytorch models of MobileNet-V1 structure. The inference time is about **0.45ms per image** on GeForce GTX TITAN X.
 More features will be added in future.
 
-Several results (inferenced from model phase1_wpdc_vdc.pth.tar) are shown below.
+Several results (inferenced from model *phase1_wpdc_vdc.pth.tar*) are shown below.
 <p align="center">
   <img src="imgs/landmark_3d.jpg" alt="Landmark 3D" width="1000px">
 </p>
@@ -44,7 +44,10 @@ The performances of pre-trained models are shown below. In the first stage, the 
 
 | Model | AFLW (21 pts) | AFLW 2000-3D (68 pts) |
 |:-:|:-:|:-:|
-| phase1_pdc.pth.tar  | 6.956±0.981 | 5.644±1.323 |
-| phase1_vdc.pth.tar  | 6.717±0.924 | 5.030±1.044 |
-| phase1_wpdc.pth.tar | 6.348±0.929 | 4.759±0.996 |
-| phase1_wpdc_vdc.pth.tar | **5.401±0.754** | **4.252±0.976** |
+| *phase1_pdc.pth.tar*  | 6.956±0.981 | 5.644±1.323 |
+| *phase1_vdc.pth.tar*  | 6.717±0.924 | 5.030±1.044 |
+| *phase1_wpdc.pth.tar* | 6.348±0.929 | 4.759±0.996 |
+| *phase1_wpdc_vdc.pth.tar* | **5.401±0.754** | **4.252±0.976** |
+
+## Training
+The training scripts lie in `training` directory.
