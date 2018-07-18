@@ -9,7 +9,6 @@ from params import *
 _to_tensor = _numpy_to_cuda  # gpu
 
 
-
 def _parse_param_batch(param):
     """Work for both numpy and tensor"""
     N = param.shape[0]

@@ -4,8 +4,8 @@ __pycache__/
 test.data/
 training/snapshot/
 training/logs/
-train.configs/param_all_norm.pkl
-train.configs/param_all_norm_val.pkl
+train.configs/param_all_norm.pkl*
+train.configs/param_all_norm_val.pkl*
 train.configs/train_aug_120x120.list.*
 
 res/
