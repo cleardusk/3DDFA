@@ -3,8 +3,8 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
 ## Introduction
-This repo holds the pytorch implementation of paper [Face Alignment in Full Pose Range: A 3D Total Solution](https://arxiv.org/abs/1804.01005) and
-release the pre-trained first-stage pytorch models of MobileNet-V1 structure. The inference time is about **0.27ms per image** on GeForce GTX TITAN X.
+This repo holds the pytorch implementation of paper [Face Alignment in Full Pose Range: A 3D Total Solution](https://arxiv.org/abs/1804.01005). It
+releases the pre-trained first-stage pytorch models of MobileNet-V1 structure, the training dataset and code. The inference time is about **0.27ms per image** on GeForce GTX TITAN X.
 More features will be added in future.
 
 Several results (inferenced from model *phase1_wpdc_vdc.pth.tar*) are shown below.
