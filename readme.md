@@ -25,6 +25,14 @@ Several results (inferenced from model *phase1_wpdc_vdc.pth.tar*) are shown belo
       publisher={IEEE}
     }
 
+    @article{zhu2016face,
+    title={Face Alignment Across Large Poses: A 3D Solution},
+    author={Zhu, Xiangyu and Lei, Zhen and Liu, Xiaoming and Shi, Hailin and Li, Stan Z},
+    journal={computer vision and pattern recognition},
+    pages={146--155},
+    year={2016}}
+    
+
 
 ## Requirements
  - PyTorch >= 0.4.0
@@ -33,6 +41,8 @@ Several results (inferenced from model *phase1_wpdc_vdc.pth.tar*) are shown belo
 I strongly recommend using Python3.6 instead of older version for its better design.
 
 ## Inference speed
+When batch size is 128, the inference time of MobileNet-V1 takes about 34.7ms. The average speed is about **0.27ms/pic**.
+
 <p align="left">
   <img src="imgs/inference_speed.png" alt="Inference speed" width="600px">
 </p>
@@ -40,7 +50,7 @@ I strongly recommend using Python3.6 instead of older version for its better des
 ## Evaluation
 First, you should download the cropped testset ALFW and ALFW-2000-3D in [test.data.zip](https://pan.baidu.com/s/1DTVGCG5k0jjjhOc8GcSLOw), then unzip it and put it in the root directory.
 Next, run the benchmark code by providing trained model path.
-I have already provided four pre-trained models in `models` directory. These models are trained using different loss in the first stage. The model size is about 13M due to the high efficiency of mobilenet-v1 structure.
+I have already provided four pre-trained models in `models` directory. These models are trained using different loss in the first stage. The model size is about 13M due to the high efficiency of MobileNet-V1 structure.
 ```
 python3 ./benchmark.py -c models/phase1_wpdc_vdc.pth.tar
 ```
@@ -55,6 +65,15 @@ The performances of pre-trained models are shown below. In the first stage, the 
 | *phase1_wpdc_vdc.pth.tar* | **5.401±0.754** | **4.252±0.976** |
 
 ## Training
-The training scripts lie in `training` directory.
+The training scripts lie in `training` directory. The related resources are in below table.
 
+| Data | Link | Description |
+|:-:|:-:|:-:|
+| train.configs | [BaiduYun](https://pan.baidu.com/s/1ozZVs26-xE49sF7nystrKQ) or [Google Drive]() (Comming soon) 217M | The directory contraining 3DMM params and filelists of training dataset |
+| train_aug_120x120.zip | [BaiduYun](https://pan.baidu.com/s/19QNGst2E1pRKL7Dtx_L1MA) or [Google Drive]() (Comming soon), 2.15G | The cropped images of augmentation training dataset |
+| test.data.zip | [BaiduYun](https://pan.baidu.com/s/1DTVGCG5k0jjjhOc8GcSLOw) or [Google Drive]() (Comming soon), 151M | The cropped images of AFLW and ALFW-2000-3D testset |
 
+After preparing the training dataset and configuration files, go into `training` directory and run the bash scripts to train. The training parameters are all presented in bash scripts.
+
+## Acknowledgement
+Thanks for your interest in this repo. If your research benefits from this repo, please cite it and star it : )

@@ -24,5 +24,5 @@ LOG_FILE="${LOG_DIR}/${LOG_ALIAS}_`date +'%Y-%m-%d_%H:%M.%S'`.log"
     --workers=8 \
     --filelists-train="../train.configs/train_aug_120x120.list.train" \
     --filelists-val="../train.configs/train_aug_120x120.list.val" \
-    --root="/mnt/ramdisk/train_aug_120x120" \
+    --root="/path/to//train_aug_120x120" \
     --log-file="${LOG_FILE}"

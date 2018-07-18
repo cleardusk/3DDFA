@@ -224,7 +224,8 @@ def main():
         if Path(args.resume).is_file():
             logging.info(f'=> loading checkpoint {args.resume}')
 
-            checkpoint = torch.load(args.resume)['state_dict']
+            checkpoint = torch.load(args.resume, map_location=lambda storage, loc: storage)['state_dict']
+            # checkpoint = torch.load(args.resume)['state_dict']
             model.load_state_dict(checkpoint)
 
         else:
