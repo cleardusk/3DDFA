@@ -24,13 +24,6 @@ Several results (inferenced from model *phase1_wpdc_vdc.pth.tar*) are shown belo
       year={2017},
       publisher={IEEE}
     }
-
-    @article{zhu2016face,
-    title={Face Alignment Across Large Poses: A 3D Solution},
-    author={Zhu, Xiangyu and Lei, Zhen and Liu, Xiaoming and Shi, Hailin and Li, Stan Z},
-    journal={computer vision and pattern recognition},
-    pages={146--155},
-    year={2016}}
     
 
 
@@ -71,9 +64,10 @@ The training scripts lie in `training` directory. The related resources are in b
 |:-:|:-:|:-:|
 | train.configs | [BaiduYun](https://pan.baidu.com/s/1ozZVs26-xE49sF7nystrKQ) or [Google Drive]() (Comming soon) 217M | The directory contraining 3DMM params and filelists of training dataset |
 | train_aug_120x120.zip | [BaiduYun](https://pan.baidu.com/s/19QNGst2E1pRKL7Dtx_L1MA) or [Google Drive]() (Comming soon), 2.15G | The cropped images of augmentation training dataset |
-| test.data.zip | [BaiduYun](https://pan.baidu.com/s/1DTVGCG5k0jjjhOc8GcSLOw) or [Google Drive]() (Comming soon), 151M | The cropped images of AFLW and ALFW-2000-3D testset |
+| test.data.zip | [BaiduYun](https://pan.baidu.com/s/1DTVGCG5k0jjjhOc8GcSLOw) or [Google Drive](https://drive.google.com/file/d/1r_ciJ1M0BSRTwndIBt42GlPFRv6CvvEP/view?usp=sharing), 151M | The cropped images of AFLW and ALFW-2000-3D testset |
 
-After preparing the training dataset and configuration files, go into `training` directory and run the bash scripts to train. The training parameters are all presented in bash scripts.
+After preparing the training dataset and configuration files, go into `training` directory and run the bash scripts to train. 
+The training parameters are all presented in bash scripts.
 
 ## Acknowledgement
-Thanks for your interest in this repo. If your research benefits from this repo, please cite it and star it : )
+Thanks for your interest in this repo. If your research benefits from this repo, please cite it and star it 😃
