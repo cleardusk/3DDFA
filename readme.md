@@ -33,8 +33,8 @@ Several results (inferenced from model *phase1_wpdc_vdc.pth.tar*) are shown belo
 I strongly recommend using Python3.6 instead of older version for its better design.
 
 ## Inference speed
-<p align="center">
-  <img src="imgs/inference_speed.png" alt="Inference speed" width="400px">
+<p align="left">
+  <img src="imgs/inference_speed.png" alt="Inference speed" width="600px">
 </p>
 
 ## Evaluation
