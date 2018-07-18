@@ -4,7 +4,7 @@
 
 ## Introduction
 This repo holds the pytorch implementation of paper [Face Alignment in Full Pose Range: A 3D Total Solution](https://arxiv.org/abs/1804.01005) and
-release the pre-trained first-stage pytorch models of MobileNet-V1 structure. The inference time is about **0.45ms per image** on GeForce GTX TITAN X.
+release the pre-trained first-stage pytorch models of MobileNet-V1 structure. The inference time is about **0.27ms per image** on GeForce GTX TITAN X.
 More features will be added in future.
 
 Several results (inferenced from model *phase1_wpdc_vdc.pth.tar*) are shown below.
@@ -32,6 +32,11 @@ Several results (inferenced from model *phase1_wpdc_vdc.pth.tar*) are shown belo
 
 I strongly recommend using Python3.6 instead of older version for its better design.
 
+## Inference speed
+<p align="center">
+  <img src="imgs/inference_speed.png" alt="Inference speed" width="400px">
+</p>
+
 ## Evaluation
 First, you should download the cropped testset ALFW and ALFW-2000-3D in [test.data.zip](https://pan.baidu.com/s/1DTVGCG5k0jjjhOc8GcSLOw), then unzip it and put it in the root directory.
 Next, run the benchmark code by providing trained model path.
@@ -51,3 +56,5 @@ The performances of pre-trained models are shown below. In the first stage, the 
 
 ## Training
 The training scripts lie in `training` directory.
+
+
