@@ -70,4 +70,6 @@ After preparing the training dataset and configuration files, go into `training`
 The training parameters are all presented in bash scripts.
 
 ## Acknowledgement
-Thanks for your interest in this repo. If your research benefits from this repo, please cite it and star it 😃
+Thanks for [Xiangyu Zhu](http://www.cbsr.ia.ac.cn/users/xiangyuzhu/)'s great work.
+Thanks for your interest in this repo.
+If your research benefits from this repo, please cite it and star it 😃
