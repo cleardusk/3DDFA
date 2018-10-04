@@ -4,8 +4,8 @@
 
 **\[Updates\]**
 
- - `2018.10.4`: Add Matlab face mesh rendering demo.
- - `2018.9.9`: Add pre-process of face cropping.
+ - `2018.10.4`: Add Matlab face mesh rendering demo in [visualize](./visualize).
+ - `2018.9.9`: Add pre-process of face cropping in [benchmark](./benchmark).
 
 
 ## Introduction
