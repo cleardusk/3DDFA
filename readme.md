@@ -4,7 +4,7 @@
 
 **\[Updates\]**
 
- - `2018.10.4`: Add matlab redered demo.
+ - `2018.10.4`: Add Matlab face mesh rendering demo.
  - `2018.9.9`: Add pre-process of face cropping.
 
 
