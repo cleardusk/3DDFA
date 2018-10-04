@@ -2,6 +2,12 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
+**\[Updates\]**
+
+ - `2018.10.4`: Add matlab redered demo.
+ - `2018.9.9`: Add pre-process of face cropping.
+
+
 ## Introduction
 This repo holds the pytorch implementation of paper [Face Alignment in Full Pose Range: A 3D Total Solution](https://arxiv.org/abs/1804.01005). It
 releases the pre-trained first-stage pytorch models of MobileNet-V1 structure, the training dataset and code. The inference time is about **0.27ms per image** on GeForce GTX TITAN X.
