@@ -10,3 +10,5 @@ train.configs/train_aug_120x120.list.*
 
 res/
 AFLW-2000-3D/
+BFM_Remove_Neck/*.mat
+
