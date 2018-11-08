@@ -1,13 +1,13 @@
-The removed neck version of BFM can be downloaded [here](https://pan.baidu.com/s/1VhWYLpnxNBrlBg5_OKTojA).
+The removed neck version of BFM can be downloaded [**here**](https://pan.baidu.com/s/1VhWYLpnxNBrlBg5_OKTojA).
 
 The original version with neck:
 <p align="center">
-  <img src="imgs/bfm.png" alt="neck">
+  <img src="imgs/bfm.png" alt="neck" width="400px">
 </p>
 
 The refined version without neck:
 <p align="center">
-  <img src="imgs/bfm_refine.png" alt="no neck">
+  <img src="imgs/bfm_refine.png" alt="no neck" width="400px">
 </p>
 
 These two images are rendered by MeshLab.
@@ -18,4 +18,4 @@ These two images are rendered by MeshLab.
   <img src="imgs/bfm_refine.jpg" alt="no neck">
 </p>
 
-Attention: the z-axis value of `bfm.ply` and `bfm_refine.ply` file are opposed in `model_refine.mat`, do not use them.
+Attention: the z-axis value of `bfm.ply` and `bfm_refine.ply` file are opposed in `model_refine.mat`, do not use these two `ply` file in training.
