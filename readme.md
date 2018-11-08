@@ -4,6 +4,8 @@
 
 **\[Updates\]**
 
+ - [ ] Update trained model.
+ - `2018.11.9`: Add removed-neck version of BFM model in [BFM_Remove_Neck](./BFM_Remove_Neck).
  - `2018.10.4`: Add Matlab face mesh rendering demo in [visualize](./visualize).
  - `2018.9.9`: Add pre-process of face cropping in [benchmark](./benchmark).
 
