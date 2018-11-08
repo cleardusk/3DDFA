@@ -4,7 +4,7 @@
 
 **\[Updates\]**
 
- - [ ] Update trained model.
+ - `2018.11.9`: Update trained model with higher performance in [models](./models).
  - `2018.11.9`: Add removed-neck version of BFM model in [BFM_Remove_Neck](./BFM_Remove_Neck).
  - `2018.10.4`: Add Matlab face mesh rendering demo in [visualize](./visualize).
  - `2018.9.9`: Add pre-process of face cropping in [benchmark](./benchmark).
@@ -64,6 +64,7 @@ The performances of pre-trained models are shown below. In the first stage, the 
 | *phase1_vdc.pth.tar*  | 6.717±0.924 | 5.030±1.044 |
 | *phase1_wpdc.pth.tar* | 6.348±0.929 | 4.759±0.996 |
 | *phase1_wpdc_vdc.pth.tar* | **5.401±0.754** | **4.252±0.976** |
+| *phase1_wpdc_vdc_v2.pth.tar* | **5.298±0.776** | **4.090±0.964** |
 
 ## Training
 The training scripts lie in `training` directory. The related resources are in below table.
