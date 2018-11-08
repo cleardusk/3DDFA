@@ -1,0 +1,21 @@
+The removed neck version of BFM can be downloaded [here](https://pan.baidu.com/s/1VhWYLpnxNBrlBg5_OKTojA).
+
+The original version with neck:
+<p align="center">
+  <img src="imgs/bfm.png" alt="neck">
+</p>
+
+The refined version without neck:
+<p align="center">
+  <img src="imgs/bfm_refine.png" alt="no neck">
+</p>
+
+These two images are rendered by MeshLab.
+
+`bfm_show.m` shows how to render it with 68 keypoints in Matlab.
+
+<p align="center">
+  <img src="imgs/bfm_refine.jpg" alt="no neck">
+</p>
+
+Attention: the z-axis value of `bfm.ply` and `bfm_refine.ply` file are opposed in `model_refine.mat`, do not use them.
