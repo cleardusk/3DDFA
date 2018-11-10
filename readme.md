@@ -79,8 +79,9 @@ The training scripts lie in `training` directory. The related resources are in b
 After preparing the training dataset and configuration files, go into `training` directory and run the bash scripts to train. 
 The training parameters are all presented in bash scripts.
 
-**FQA**
+## FQA
 1. Face bounding box initialization
+
 The original paper validates that using detected bounding box instead of ground truth box will cause a little performance drop. Thus the current face cropping method is robustest. Quantitative results are shown in below table.
 
 <p align="center">
