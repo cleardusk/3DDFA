@@ -10,6 +10,7 @@
  - `2018.9.9`: Add pre-process of face cropping in [benchmark](./benchmark).
 
 
+
 ## Introduction
 This repo holds the pytorch implementation of paper [Face Alignment in Full Pose Range: A 3D Total Solution](https://arxiv.org/abs/1804.01005). It
 releases the pre-trained first-stage pytorch models of MobileNet-V1 structure, the training dataset and code. The inference time is about **0.27ms per image** on GeForce GTX TITAN X.
@@ -77,6 +78,14 @@ The training scripts lie in `training` directory. The related resources are in b
 
 After preparing the training dataset and configuration files, go into `training` directory and run the bash scripts to train. 
 The training parameters are all presented in bash scripts.
+
+**FQA**
+1. Face bounding box initialization
+The original paper validates that using detected bounding box instead of ground truth box will cause a little performance drop. Thus the current face cropping method is robustest. Quantitative results are shown in below table.
+
+<p align="center">
+  <img src="imgs/bouding_box_init.png" alt="bounding box" width="300px">
+</p>
 
 ## Acknowledgement
 Thanks for [Xiangyu Zhu](http://www.cbsr.ia.ac.cn/users/xiangyuzhu/)'s great work.
