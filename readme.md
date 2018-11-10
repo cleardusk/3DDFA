@@ -82,7 +82,7 @@ The training parameters are all presented in bash scripts.
 ## FQA
 1. Face bounding box initialization
 
-The original paper validates that using detected bounding box instead of ground truth box will cause a little performance drop. Thus the current face cropping method is robustest. Quantitative results are shown in below table.
+    The original paper validates that using detected bounding box instead of ground truth box will cause a little performance drop. Thus the current face cropping method is robustest. Quantitative results are shown in below table.
 
 <p align="center">
   <img src="imgs/bouding_box_init.png" alt="bounding box" width="500px">
