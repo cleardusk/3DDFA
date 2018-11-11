@@ -190,11 +190,10 @@ def main(args):
     for k in checkpoint.keys():
         model_dict[k.replace('module.', '')] = checkpoint[k]
     model.load_state_dict(model_dict)
-
-    model.eval()
     if args.mode == 'gpu':
         cudnn.benchmark = True
         model = model.cuda()
+    model.eval()
 
     # 2. load dlib model
     dlib_landmark_model = 'models/shape_predictor_68_face_landmarks.dat'
@@ -251,6 +250,8 @@ def main(args):
                 img_step2 = cv2.resize(img_step2, dsize=(120, 120), interpolation=cv2.INTER_LINEAR)
                 input = transform(img_step2).unsqueeze(0)
                 with torch.no_grad():
+                    if args.mode == 'gpu':
+                        input = input.cuda()
                     param = model(input)
                     param = param.squeeze().cpu().numpy().flatten().astype(np.float32)
                 pts68 = predict_68pts(param, roi_box_step2)
