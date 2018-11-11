@@ -4,7 +4,7 @@
 
 **\[Updates\]**
 
- - `2018.11.11`: **Update inference pipeline: infer 3D shape and 68 landmarks given one arbitary image, please see readme for more details.**
+ - `2018.11.11`: **Update inference pipeline: infer 3D shape and 68 landmarks given one arbitrary image, please see readme for more details.**
  - `2018.11.9`: Update trained model with higher performance in [models](./models).
  - `2018.11.9`: Add removed-neck version of BFM model in [BFM_Remove_Neck](./BFM_Remove_Neck).
  - `2018.10.4`: Add Matlab face mesh rendering demo in [visualize](./visualize).
@@ -21,12 +21,12 @@ In addition, I strongly recommend using Python3.6+ instead of older version for 
 
 ### Usage
 
-1. Clone this repo
+1. Clone this repo (this may take some time as it is a little big)
     ```
     git clone https://github.com/cleardusk/3DDFA.git  # or git@github.com:cleardusk/3DDFA.git
     cd 3DDFA
     ```
-2. Run the `main.py` with arbitary image
+2. Run the `main.py` with arbitrary image as input
     ```
     python3 main.py -f samples/test1.jpg
     ```
@@ -40,6 +40,7 @@ In addition, I strongly recommend using Python3.6+ instead of older version for 
     ```
 
     Because `test1.jpg` has two faces, there are two `mat` (stores dense face vertices, can be rendered by Matlab, see [visualize](./visualize)) and `ply` files (can be rendered by Meshlab or Microsoft 3D Builder) predicted.
+
     Please run `python3 main.py -h` or review the code for more details.
 
 <p align="center">
