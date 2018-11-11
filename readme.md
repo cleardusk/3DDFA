@@ -59,6 +59,7 @@ In addition, I strongly recommend using Python3.6+ instead of older version for 
     Please run `python3 main.py -h` or review the code for more details.
 
     The result `samples/test1_3DDFA.jpg` is shown below
+
 <p align="center">
   <img src="samples/test1_3DDFA.jpg" alt="samples" width="700px">
 </p>
@@ -68,8 +69,9 @@ In addition, I strongly recommend using Python3.6+ instead of older version for 
     python3 ./main.py -f samples/emma_input.jpg --box_init=two --dlib_bbox=false
     ```
     and the result `samples/emma_input_3DDFA.jpg` is shown below
+
 <p align="center">
-  <img src="samples/samples/emma_input_3DDFA.jpg" alt="samples" width="700px">
+  <img src="samples/emma_input_3DDFA.jpg" alt="samples" width="700px">
 </p>
 
 
