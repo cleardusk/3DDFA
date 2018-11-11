@@ -2,6 +2,10 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
+<p align="center">
+  <img src="samples/obama_3DDFA.gif" alt="obama">
+</p>
+
 **\[Updates\]**
 
  - `2018.11.11`: **Update inference pipeline: infer/serialize 3D face shape and 68 landmarks given one arbitrary image, please see readme.md below for more details.**
