@@ -205,12 +205,15 @@ def main(args):
     tri = sio.loadmat('visualize/tri.mat')['tri']
     for img_fp in args.files:
         img_ori = cv2.imread(img_fp)
-        rects = face_detector(img_ori, 1)
+        if args.dlib_bbox:
+            rects = face_detector(img_ori, 1)
+        else:
+            rects = []
 
         if len(rects) == 0:
             rects = dlib.rectangles()
             rect_fp = img_fp + '.bbox'
-            lines = open(rect_fp).reaad().strip().split('\n')[1:]
+            lines = open(rect_fp).read().strip().split('\n')[1:]
             for l in lines:
                 l, r, t, b = [int(_) for _ in l.split(' ')[1:]]
                 rect = dlib.rectangle(l, r, t, b)
@@ -277,6 +280,7 @@ if __name__ == '__main__':
     parser.add_argument('--dump_res', default='true', type=str2bool, help='whether write out the visualization image')
     parser.add_argument('--dump_vertex', default='true', type=str2bool)
     parser.add_argument('--dump_ply', default='true', type=str2bool)
+    parser.add_argument('--dlib_bbox', default='true', type=str2bool)
 
     args = parser.parse_args()
     main(args)
