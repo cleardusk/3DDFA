@@ -10,6 +10,21 @@
  - `2018.10.4`: Add Matlab face mesh rendering demo in [visualize](./visualize).
  - `2018.9.9`: Add pre-process of face cropping in [benchmark](./benchmark).
 
+## Introduction
+This repo holds the pytorch improved re-implementation of paper [Face Alignment in Full Pose Range: A 3D Total Solution](https://arxiv.org/abs/1804.01005). Several additional works are added in this repo, including real-time training, training strategy and so on. Therefore, this repo is far more than re-implementation. One related blog will be published for some important technique details in future.
+As far, this repo releases the pre-trained first-stage pytorch models of MobileNet-V1 structure, the training dataset and code.
+And the inference time is about **0.27ms per image** (input batch with 128 iamges) on GeForce GTX TITAN X.
+**These repo will keep being updated, thus any meaningful issues and PR are welcomed.**
+
+Several results (inferenced from model *phase1_wpdc_vdc.pth.tar*) are shown below.
+<p align="center">
+  <img src="imgs/landmark_3d.jpg" alt="Landmark 3D" width="1000px">
+</p>
+
+<p align="center">
+  <img src="imgs/vertex_3d.jpg" alt="Vertex 3D" width="750px">
+</p>
+
 ## Getting started
 ### Requirements
  - PyTorch >= 0.4.1
@@ -43,24 +58,21 @@ In addition, I strongly recommend using Python3.6+ instead of older version for 
 
     Please run `python3 main.py -h` or review the code for more details.
 
+    The result `samples/test1_3DDFA.jpg` is shown below
 <p align="center">
-  <img src="samples/test1_3DDFA.jpg" alt="samples" width="750px">
+  <img src="samples/test1_3DDFA.jpg" alt="samples" width="700px">
+</p>
+
+    One more example:
+    ```
+    python3 ./main.py -f samples/emma_input.jpg --box_init=two --dlib_bbox=false
+    ```
+    and the result `samples/emma_input_3DDFA.jpg` is shown below
+<p align="center">
+  <img src="samples/samples/emma_input_3DDFA.jpg" alt="samples" width="700px">
 </p>
 
 
-## Introduction
-This repo holds the pytorch implementation of paper [Face Alignment in Full Pose Range: A 3D Total Solution](https://arxiv.org/abs/1804.01005). It
-releases the pre-trained first-stage pytorch models of MobileNet-V1 structure, the training dataset and code. The inference time is about **0.27ms per image** on GeForce GTX TITAN X.
-More features will be added in future.
-
-Several results (inferenced from model *phase1_wpdc_vdc.pth.tar*) are shown below.
-<p align="center">
-  <img src="imgs/landmark_3d.jpg" alt="Landmark 3D" width="1000px">
-</p>
-
-<p align="center">
-  <img src="imgs/vertex_3d.jpg" alt="Vertex 3D" width="750px">
-</p>
 
 ## Citation
     @article{zhu2017face,
