@@ -8,7 +8,7 @@
 
 **\[Updates\]**
 
- - `2018.11.11`: **Update inference pipeline: infer/serialize 3D face shape and 68 landmarks given one arbitrary image, please see readme.md below for more details.**
+ - `2018.11.11`: **Update end-to-end inference pipeline: infer/serialize 3D face shape and 68 landmarks given one arbitrary image, please see readme.md below for more details.**
  - `2018.11.9`: Update trained model with higher performance in [models](./models).
  - `2018.11.9`: Add removed-neck version of BFM model in [BFM_Remove_Neck](./BFM_Remove_Neck).
  - `2018.10.4`: Add Matlab face mesh rendering demo in [visualize](./visualize).
