@@ -4,11 +4,47 @@
 
 **\[Updates\]**
 
+ - `2018.11.11`: **Update inference pipeline: infer 3D shape and 68 landmarks given one arbitary image, please see readme for more details.**
  - `2018.11.9`: Update trained model with higher performance in [models](./models).
  - `2018.11.9`: Add removed-neck version of BFM model in [BFM_Remove_Neck](./BFM_Remove_Neck).
  - `2018.10.4`: Add Matlab face mesh rendering demo in [visualize](./visualize).
  - `2018.9.9`: Add pre-process of face cropping in [benchmark](./benchmark).
 
+## Getting started
+### Requirements
+ - PyTorch >= 0.4.1
+ - Python >= 3.6 (Numpy, Scipy, Matplotlib)
+ - Dlib (Dlib is used for detecting face and landmarks. There is no need to use Dlib if you can provide face bouding bbox and landmarks. Optionally, you can use the two-step inference strategy without initialized landmarks.)
+ - OpenCV (Python version, for image IO opertations.)
+
+In addition, I strongly recommend using Python3.6+ instead of older version for its better design.
+
+### Usage
+
+1. Clone this repo
+    ```
+    git clone https://github.com/cleardusk/3DDFA.git  # or git@github.com:cleardusk/3DDFA.git
+    cd 3DDFA
+    ```
+2. Run the `main.py` with arbitary image
+    ```
+    python3 main.py -f samples/test1.jpg
+    ```
+    If you can see these outputs in terminal, you run it successfully.
+    ```
+    Dump tp samples/test1_0.ply
+    Dump tp samples/test1_0.mat
+    Dump tp samples/test1_1.ply
+    Dump tp samples/test1_1.mat
+    Save visualization result to samples/test1_3DDFA.jpg
+    ```
+
+    Because `test1.jpg` has two faces, there are two `mat` (stores dense face vertices, can be rendered by Matlab, see [visualize](./visualize)) and `ply` files (can be rendered by Meshlab or Microsoft 3D Builder) predicted.
+    Please run `python3 main.py -h` or review the code for more details.
+
+<p align="center">
+  <img src="samples/test1_3DDFA.jpg" alt="samples" width="750px">
+</p>
 
 
 ## Introduction
@@ -35,12 +71,6 @@ Several results (inferenced from model *phase1_wpdc_vdc.pth.tar*) are shown belo
     }
     
 
-
-## Requirements
- - PyTorch >= 0.4.0
- - Python3.6
-
-I strongly recommend using Python3.6 instead of older version for its better design.
 
 ## Inference speed
 When batch size is 128, the inference time of MobileNet-V1 takes about 34.7ms. The average speed is about **0.27ms/pic**.
