@@ -89,6 +89,14 @@ In addition, I strongly recommend using Python3.6+ instead of older version for 
       year={2017},
       publisher={IEEE}
     }
+
+    @misc{3ddfa_cleardusk,
+    author =       {Jianzhu Guo and Xiangyu Zhu},
+    title =        {3DDFA},
+    howpublished = {\url{https://github.com/cleardusk/3DDFA}},
+    year =         {2018}
+}
+
     
 
 
