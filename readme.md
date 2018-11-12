@@ -3,7 +3,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
 <p align="center">
-  <img src="samples/obama_3DDFA.gif" alt="obama">
+  <img src="samples/obama_compare.gif" alt="obama">
 </p>
 
 **\[Updates\]**
