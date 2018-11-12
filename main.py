@@ -133,7 +133,7 @@ def predict_68pts(param, roi_box):
     return pts68
 
 
-def draw_landmarks(img, pts, style='fancy', wfp=None, show_flg=False):
+def draw_landmarks(img, pts, style='fancy', wfp=None, show_flg=False, **kwargs):
     """Draw landmarks using matpliotlib"""
     plt.figure(figsize=(12, 8))
     plt.imshow(img[:, :, ::-1])
@@ -148,8 +148,8 @@ def draw_landmarks(img, pts, style='fancy', wfp=None, show_flg=False):
             alpha = 0.8
             markersize = 4
             lw = 1.5
-            color = 'w'
-            markeredgecolor = 'black'
+            color = kwargs.get('color', 'w')
+            markeredgecolor = kwargs.get('markeredgecolor', 'black')
 
             nums = [0, 17, 22, 27, 31, 36, 42, 48, 60, 68]
 
