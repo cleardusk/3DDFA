@@ -91,11 +91,11 @@ In addition, I strongly recommend using Python3.6+ instead of older version for 
     }
 
     @misc{3ddfa_cleardusk,
-    author =       {Jianzhu Guo and Xiangyu Zhu},
-    title =        {3DDFA},
-    howpublished = {\url{https://github.com/cleardusk/3DDFA}},
-    year =         {2018}
-}
+      author =       {Jianzhu Guo and Xiangyu Zhu},
+      title =        {3DDFA},
+      howpublished = {\url{https://github.com/cleardusk/3DDFA}},
+      year =         {2018}
+    }
 
     
 
