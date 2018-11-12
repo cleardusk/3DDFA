@@ -20,3 +20,9 @@ samples/*.ply
 samples.ori/
 visualize/tmp.m
 
+samples/obama
+samples/hilary
+demo_video.py
+tmp/
+samples/obama_prnet/
+demo_obama.py
