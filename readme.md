@@ -80,6 +80,10 @@ In addition, I strongly recommend using Python3.6+ instead of older version for 
 </p>
 
 
+<p align="center">
+  <img src="samples/dapeng_3DDFA_trim.gif" alt="dapeng">
+</p>
+
 
 ## Citation
     @article{zhu2017face,
