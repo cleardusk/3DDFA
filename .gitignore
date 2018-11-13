@@ -26,3 +26,5 @@ demo_video.py
 tmp/
 samples/obama_prnet/
 demo_obama.py
+samples/dapeng
+main_video*
