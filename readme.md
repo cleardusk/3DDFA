@@ -37,6 +37,14 @@ Several results on ALFW-2000 dataset (inferenced from model *phase1_wpdc_vdc.pth
  - Dlib (Dlib is used for detecting face and landmarks. There is no need to use Dlib if you can provide face bouding bbox and landmarks. Optionally, you can use the two-step inference strategy without initialized landmarks.)
  - OpenCV (Python version, for image IO opertations.)
 
+ ```
+ # installation structions
+ sudo pip3 install torch torchvision # for cpu version. more option to see https://pytorch.org
+ sudo pip3 install numpy scipy matplotlib
+ sudo pip3 install dlib==19.5.0 # 19.15+ version may cause conflict with pytorch, this may take several minutes
+ sudo pip3 install opencv-python
+ ```
+
 In addition, I strongly recommend using Python3.6+ instead of older version for its better design.
 
 ### Usage
