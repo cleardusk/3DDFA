@@ -15,7 +15,10 @@ from params import *
 
 
 def reconstruct_vertex(param, whitening=True, dense=False):
-    """Whitening param -> 3d vertex, based on the 3dmm param: u_base, w_shp, w_exp"""
+    """Whitening param -> 3d vertex, based on the 3dmm param: u_base, w_shp, w_exp
+    dense: if True, return dense vertex, else return 68 sparse landmarks. All dense or sparse vertex is transformed to
+    image coordinate space, but without alignment caused by face cropping.
+    """
     if len(param) == 12:
         param = np.concatenate((param, [0] * 50))
     if whitening:
@@ -32,10 +35,14 @@ def reconstruct_vertex(param, whitening=True, dense=False):
 
     if dense:
         vertex = p @ (u + w_shp @ alpha_shp + w_exp @ alpha_exp).reshape(3, -1, order='F') + offset
+
+        # transform to image coordinate space
+        vertex[1, :] = std_size + 1 - vertex[1, :]
     else:
         """For 68 pts"""
         vertex = p @ (u_base + w_shp_base @ alpha_shp + w_exp_base @ alpha_exp).reshape(3, -1, order='F') + offset
-        # for landmarks
+
+        # transform to image coordinate space
         vertex[1, :] = std_size + 1 - vertex[1, :]
 
     return vertex
