@@ -6,9 +6,8 @@ __author__ = 'cleardusk'
 The pipeline of 3DDFA prediction: given one image, predict the 3d face vertices, 68 landmarks and visualization.
 
 [todo]
-0. Re-map the 3D vertex to original image space
+0. Dump to obj with texture
 1. CPU optimization: https://pmchojnacki.wordpress.com/2018/10/07/slow-pytorch-cpu-performance
-2. Refine code
 """
 
 # import modules
