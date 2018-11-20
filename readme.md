@@ -31,6 +31,17 @@ Several results on ALFW-2000 dataset (inferenced from model *phase1_wpdc_vdc.pth
   <img src="imgs/vertex_3d.jpg" alt="Vertex 3D" width="750px">
 </p>
 
+## Applications
+### Face Alignment
+<p align="center">
+  <img src="samples/dapeng_3DDFA_trim.gif" alt="dapeng">
+</p>
+
+### Face Reconstruction
+<p align="center">
+  <img src="samples/5.png" alt="dapeng" width="750px">
+</p>
+
 ## Getting started
 ### Requirements
  - PyTorch >= 0.4.1
@@ -88,17 +99,6 @@ In addition, I strongly recommend using Python3.6+ instead of older version for 
 
 <p align="center">
   <img src="samples/emma_input_3DDFA.jpg" alt="samples" width="700px">
-</p>
-
-## Applications
-### Face Alignment
-<p align="center">
-  <img src="samples/dapeng_3DDFA_trim.gif" alt="dapeng">
-</p>
-
-### Face Reconstruction
-<p align="center">
-  <img src="samples/5.png" alt="dapeng" width="750px">
 </p>
 
 ## Citation
