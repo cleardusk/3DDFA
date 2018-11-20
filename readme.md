@@ -90,11 +90,16 @@ In addition, I strongly recommend using Python3.6+ instead of older version for 
   <img src="samples/emma_input_3DDFA.jpg" alt="samples" width="700px">
 </p>
 
-
+## Applications
+### Face Alignment
 <p align="center">
   <img src="samples/dapeng_3DDFA_trim.gif" alt="dapeng">
 </p>
 
+### Face Reconstruction
+<p align="center">
+  <img src="samples/5.png" alt="dapeng" width="750px">
+</p>
 
 ## Citation
     @article{zhu2017face,
