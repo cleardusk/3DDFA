@@ -167,6 +167,9 @@ The training parameters are all presented in bash scripts.
 </p>
 
 ## Acknowledgement
-Thanks for [Xiangyu Zhu](http://www.cbsr.ia.ac.cn/users/xiangyuzhu/)'s great work.
+
+ - Thanks for [Xiangyu Zhu](http://www.cbsr.ia.ac.cn/users/xiangyuzhu/)'s great work.
+ - Thanks for [Yao Feng](https://github.com/YadiraF)'s fantastic work [PRNet](https://github.com/YadiraF/PRNet) and [face3d](https://github.com/YadiraF/face3d).
+
 Thanks for your interest in this repo.
-If your research benefits from this repo, please cite it and star it 😃
+If your work or research benefit from this repo, please cite it and star it 😃
