@@ -153,6 +153,7 @@ The training scripts lie in `training` directory. The related resources are in b
 | train.configs | [BaiduYun](https://pan.baidu.com/s/1ozZVs26-xE49sF7nystrKQ) or [Google Drive](https://drive.google.com/open?id=1dzwQNZNMppFVShLYoLEfU3EOj3tCeXOD), 217M | The directory contraining 3DMM params and filelists of training dataset |
 | train_aug_120x120.zip | [BaiduYun](https://pan.baidu.com/s/19QNGst2E1pRKL7Dtx_L1MA) or [Google Drive](https://drive.google.com/open?id=17LfvBZFAeXt0ACPnVckfdrLTMHUpIQqE), 2.15G | The cropped images of augmentation training dataset |
 | test.data.zip | [BaiduYun](https://pan.baidu.com/s/1DTVGCG5k0jjjhOc8GcSLOw) or [Google Drive](https://drive.google.com/file/d/1r_ciJ1M0BSRTwndIBt42GlPFRv6CvvEP/view?usp=sharing), 151M | The cropped images of AFLW and ALFW-2000-3D testset |
+| model_refine.mat | [BaiduYun](https://pan.baidu.com/s/1VhWYLpnxNBrlBg5_OKTojA) or [Google Drive](https://drive.google.com/open?id=1yi03Uq3j_GruOQGAfDi9_VzfYnALojrp) | BFM Model without neck part|
 
 After preparing the training dataset and configuration files, go into `training` directory and run the bash scripts to train. 
 The training parameters are all presented in bash scripts.
