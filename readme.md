@@ -110,7 +110,7 @@ In addition, I strongly recommend using Python3.6+ instead of older version for 
     }
 
     @misc{3ddfa_cleardusk,
-      author =       {Jianzhu Guo and Xiangyu Zhu},
+      author =       {Jianzhu Guo, Xiangyu Zhu and Zhen Lei},
       title =        {3DDFA},
       howpublished = {\url{https://github.com/cleardusk/3DDFA}},
       year =         {2018}
@@ -167,8 +167,8 @@ The training parameters are all presented in bash scripts.
 
 ## Acknowledgement
 
- - Thanks for [Xiangyu Zhu](http://www.cbsr.ia.ac.cn/users/xiangyuzhu/)'s great work.
- - Thanks for [Yao Feng](https://github.com/YadiraF)'s fantastic work [PRNet](https://github.com/YadiraF/PRNet) and [face3d](https://github.com/YadiraF/face3d).
+ - Thanks for [Xiangyu Zhu](http://www.cbsr.ia.ac.cn/users/xiangyuzhu/)'s great work and [Zhen Lei](http://www.cbsr.ia.ac.cn/users/zlei/)'s advising.
+ - Thanks for [Yao Feng](https://github.com/YadiraF)'s fantastic works [PRNet](https://github.com/YadiraF/PRNet) and [face3d](https://github.com/YadiraF/face3d).
 
 Thanks for your interest in this repo.
 If your work or research benefit from this repo, please cite it and star it 😃
