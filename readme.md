@@ -173,4 +173,4 @@ The training parameters are all presented in bash scripts.
 Thanks for your interest in this repo.
 If your work or research benefit from this repo, please cite it and star it 😃
 
-And welcome to focus on my another 3D face elated work: [MeGlass](https://github.com/cleardusk/MeGlass), it will keep being update too.
+And welcome to focus on my another 3D face related work: [MeGlass](https://github.com/cleardusk/MeGlass), it will keep being update too.
