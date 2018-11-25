@@ -26,6 +26,12 @@ ADD requirements.txt /root/requirements.txt
 
 RUN pip3.6 install torch
 
-RUN export CPLUS_INCLUDE_PATH=/usr/local/include/python3.6 m&& pip3.6 install --upgrade pip==9.0.3 && pip3.6 install -r /root/requirements.txt
+RUN export CPLUS_INCLUDE_PATH=/usr/local/include/python3.6m && \
+    pip3.6 install --upgrade pip==9.0.3 && \
+    pip3.6 install -r /root/requirements.txt
+
+VOLUME ["/root"]
+
+WORKDIR /root
 
 ENTRYPOINT ["python", "main.py", "-f", "samples/emma_input.jpg"]
