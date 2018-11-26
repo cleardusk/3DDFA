@@ -174,3 +174,7 @@ Thanks for your interest in this repo.
 If your work or research benefit from this repo, please cite it and star it 😃
 
 And welcome to focus on my another 3D face related work: [MeGlass](https://github.com/cleardusk/MeGlass), it will keep being update too.
+
+My homepage is [Jianzhu Guo (郭建珠)](https://guojianzhu.com/) and my personal email is **jianzhu.guo@nlpr.ia.ac.cn** or **guojianzhu1994@foxmail.com**.
+
+
