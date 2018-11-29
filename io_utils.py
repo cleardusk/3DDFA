@@ -57,9 +57,6 @@ def _load_gpu(fp):
     return torch.from_numpy(_load(fp)).cuda()
 
 
-from io_utils import _get_suffix, _dump, _load
-
-
 def load_bfm(model_path):
     suffix = _get_suffix(model_path)
     if suffix == 'mat':
