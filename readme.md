@@ -47,6 +47,7 @@ Several results on ALFW-2000 dataset (inferenced from model *phase1_wpdc_vdc.pth
  - Python >= 3.6 (Numpy, Scipy, Matplotlib)
  - Dlib (Dlib is used for detecting face and landmarks. There is no need to use Dlib if you can provide face bouding bbox and landmarks. Optionally, you can use the two-step inference strategy without initialized landmarks.)
  - OpenCV (Python version, for image IO opertations.)
+ - Platform: Linux or macOS (Windows is not tested)
 
  ```
  # installation structions
