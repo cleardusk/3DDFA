@@ -167,7 +167,7 @@ The training parameters are all presented in bash scripts.
 
 ## Acknowledgement
 
- - Thanks for [Xiangyu Zhu](http://www.cbsr.ia.ac.cn/users/xiangyuzhu/)'s great work and [Zhen Lei](http://www.cbsr.ia.ac.cn/users/zlei/)'s advising.
+ - Authors of this project: [Jianzhu Guo (郭建珠)](https://guojianzhu.com), [Xiangyu Zhu (朱翔昱)](http://www.cbsr.ia.ac.cn/users/xiangyuzhu/) and [Zhen Lei (雷震)](http://www.cbsr.ia.ac.cn/users/zlei/).
  - Thanks for [Yao Feng](https://github.com/YadiraF)'s fantastic works [PRNet](https://github.com/YadiraF/PRNet) and [face3d](https://github.com/YadiraF/face3d).
 
 Thanks for your interest in this repo.
@@ -175,6 +175,4 @@ If your work or research benefit from this repo, please cite it and star it 😃
 
 And welcome to focus on my another 3D face related work: [MeGlass](https://github.com/cleardusk/MeGlass), it will keep being update too.
 
-My homepage is [Jianzhu Guo (郭建珠)](https://guojianzhu.com/) and my personal email is **jianzhu.guo@nlpr.ia.ac.cn** or **guojianzhu1994@foxmail.com**.
-
-
+My homepage is [Jianzhu Guo (郭建珠)](https://guojianzhu.com/) and my personal email is **jianzhu.guo@nlpr.ia.ac.cn** or **guojianzhu1994@foxmail.com**. Xiangyu Zhu's homepage is [Xiangyu Zhu (朱翔昱)](http://www.cbsr.ia.ac.cn/users/xiangyuzhu/) and email is **xiangyu.zhu@nlpr.ia.ac.cn**.
