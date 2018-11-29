@@ -8,23 +8,13 @@ train.configs/param_all_norm.pkl*
 train.configs/param_all_norm_val.pkl*
 train.configs/train_aug_120x120.list.*
 
-res/
-AFLW-2000-3D/
-BFM_Remove_Neck/*.mat
-
 samples/*.mat
 samples/*.ply
+samples/*.txt
 
 .ipynb_checkpoints/
 *.ipynb
-samples.ori/
-visualize/tmp.m
-
-samples/obama
-samples/hilary
-demo_video.py
 tmp/
-samples/obama_prnet/
-demo_obama.py
-samples/dapeng
-main_video*
+
+models/shape_predictor_68_face_landmarks.dat
+.DS_Store

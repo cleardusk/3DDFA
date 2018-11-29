@@ -65,6 +65,10 @@ In addition, I strongly recommend using Python3.6+ instead of older version for 
     git clone https://github.com/cleardusk/3DDFA.git  # or git@github.com:cleardusk/3DDFA.git
     cd 3DDFA
     ```
+
+   Then, download dlib landmark model in [Google Drive](https://drive.google.com/open?id=1kxgOZSds1HuUIlvo5sRH3PJv377qZAkE) or [Baidu Yun](https://pan.baidu.com/s/1bx-GxGf50-KDk4xz3bCYcw), and put it into `models` directory. (To reduce this repo's size, I remove some large size binary files including this model, so you should download it : ) )
+
+    
 2. Run the `main.py` with arbitrary image as input
     ```
     python3 main.py -f samples/test1.jpg
@@ -122,32 +126,32 @@ In addition, I strongly recommend using Python3.6+ instead of older version for 
 ## Inference speed
 When batch size is 128, the inference time of MobileNet-V1 takes about 34.7ms. The average speed is about **0.27ms/pic**.
 
-<p align="left">
+<p align="center">
   <img src="imgs/inference_speed.png" alt="Inference speed" width="600px">
 </p>
 
 ## Evaluation
 First, you should download the cropped testset ALFW and ALFW-2000-3D in [test.data.zip](https://pan.baidu.com/s/1DTVGCG5k0jjjhOc8GcSLOw), then unzip it and put it in the root directory.
 Next, run the benchmark code by providing trained model path.
-I have already provided four pre-trained models in `models` directory. These models are trained using different loss in the first stage. The model size is about 13M due to the high efficiency of MobileNet-V1 structure.
+I have already provided five pre-trained models in `models` directory (seen in below table). These models are trained using different loss in the first stage. The model size is about 13M due to the high efficiency of MobileNet-V1 structure.
 ```
-python3 ./benchmark.py -c models/phase1_wpdc_vdc.pth.tar
+python3 ./benchmark.py -c models/phase1_wpdc_vdc_v2.pth.tar
 ```
 
 The performances of pre-trained models are shown below. In the first stage, the effectiveness of different loss is in order: WPDC > VDC > PDC. While the strategy using VDC to finetune WPDC achieves the best result.
 
-| Model | AFLW (21 pts) | AFLW 2000-3D (68 pts) |
-|:-:|:-:|:-:|
-| *phase1_pdc.pth.tar*  | 6.956±0.981 | 5.644±1.323 |
-| *phase1_vdc.pth.tar*  | 6.717±0.924 | 5.030±1.044 |
-| *phase1_wpdc.pth.tar* | 6.348±0.929 | 4.759±0.996 |
-| *phase1_wpdc_vdc.pth.tar* | **5.401±0.754** | **4.252±0.976** |
-| *phase1_wpdc_vdc_v2.pth.tar* \[newly add\] | **5.298±0.776** | **4.090±0.964** |
+| Model | AFLW (21 pts) | AFLW 2000-3D (68 pts) | Download Link |
+|:-:|:-:|:-:| :-: |
+| *phase1_pdc.pth.tar*  | 6.956±0.981 | 5.644±1.323 | [Baidu Yun](https://pan.baidu.com/s/1xeyZa4rxVazd_QGWx6QXFw) or [Google Drive](https://drive.google.com/open?id=18UQfDkGNzotKoFV0Lh_O-HnXsp1ABdjl) |
+| *phase1_vdc.pth.tar*  | 6.717±0.924 | 5.030±1.044 | [Baidu Yun](https://pan.baidu.com/s/10-0YpYKj1_efJYqC1q-aNQ) or [Google Drive](https://drive.google.com/open?id=1iHADYNIQR2Jqvt4nwmnh5n3Axe-HXMRR) |
+| *phase1_wpdc.pth.tar* | 6.348±0.929 | 4.759±0.996 | [Baidu Yun](https://pan.baidu.com/s/1yqaJ3S3MNpYBgyA5BYtHuw) or [Google Drive](https://drive.google.com/open?id=1ebwkOWjaQ7U4mpA89ldfmjeQdfDDdFS-) |
+| *phase1_wpdc_vdc.pth.tar* | **5.401±0.754** | **4.252±0.976** | [Baidu Yun](https://pan.baidu.com/s/1Vxk5jeP8fd4l6HM3or-OcQ) or [Google Drive](https://drive.google.com/open?id=137QLVonYZkMxfaRqzDQWFvlm6BHPp5LZ) |
+| *phase1_wpdc_vdc_v2.pth.tar* \[newly add\] | **5.298±0.776** | **4.090±0.964** | Already existed in this repo. |
 
 ## Training
 The training scripts lie in `training` directory. The related resources are in below table.
 
-| Data | Link | Description |
+| Data | Download Link | Description |
 |:-:|:-:|:-:|
 | train.configs | [BaiduYun](https://pan.baidu.com/s/1ozZVs26-xE49sF7nystrKQ) or [Google Drive](https://drive.google.com/open?id=1dzwQNZNMppFVShLYoLEfU3EOj3tCeXOD), 217M | The directory contraining 3DMM params and filelists of training dataset |
 | train_aug_120x120.zip | [BaiduYun](https://pan.baidu.com/s/19QNGst2E1pRKL7Dtx_L1MA) or [Google Drive](https://drive.google.com/open?id=17LfvBZFAeXt0ACPnVckfdrLTMHUpIQqE), 2.15G | The cropped images of augmentation training dataset |
@@ -173,6 +177,7 @@ The training parameters are all presented in bash scripts.
 Thanks for your interest in this repo.
 If your work or research benefit from this repo, please cite it and star it 😃
 
-And welcome to focus on my another 3D face related work: [MeGlass](https://github.com/cleardusk/MeGlass), it will keep being update too.
+And welcome to focus on my another 3D face related work [MeGlass](https://github.com/cleardusk/MeGlass), it will keep being update too.
 
-My homepage is [Jianzhu Guo (郭建珠)](https://guojianzhu.com/) and my personal email is **jianzhu.guo@nlpr.ia.ac.cn** or **guojianzhu1994@foxmail.com**. Xiangyu Zhu's homepage is [Xiangyu Zhu (朱翔昱)](http://www.cbsr.ia.ac.cn/users/xiangyuzhu/) and email is **xiangyu.zhu@nlpr.ia.ac.cn**.
+My homepage is [Jianzhu Guo (郭建珠)](https://guojianzhu.com/) and my personal email is **jianzhu.guo@nlpr.ia.ac.cn**. 
+Xiangyu Zhu's homepage is [Xiangyu Zhu (朱翔昱)](http://www.cbsr.ia.ac.cn/users/xiangyuzhu/) and email is **xiangyu.zhu@nlpr.ia.ac.cn**.
