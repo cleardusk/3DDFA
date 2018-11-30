@@ -172,7 +172,7 @@ The training parameters are all presented in bash scripts.
 
 ## Acknowledgement
 
- - Authors of this project: [Jianzhu Guo (郭建珠)](https://guojianzhu.com), [Xiangyu Zhu (朱翔昱)](http://www.cbsr.ia.ac.cn/users/xiangyuzhu/). This project is supervised by [Zhen Lei (雷震)](http://www.cbsr.ia.ac.cn/users/zlei/).
+ - Authors of this project: [Jianzhu Guo](https://guojianzhu.com), [Xiangyu Zhu](http://www.cbsr.ia.ac.cn/users/xiangyuzhu/). This project is partially supervised by [Zhen Lei](http://www.cbsr.ia.ac.cn/users/zlei/).
  - Thanks for [Yao Feng](https://github.com/YadiraF)'s fantastic works [PRNet](https://github.com/YadiraF/PRNet) and [face3d](https://github.com/YadiraF/face3d).
 
 Thanks for your interest in this repo.
@@ -182,3 +182,4 @@ And welcome to focus on my another 3D face related work [MeGlass](https://github
 
 My homepage is [Jianzhu Guo (郭建珠)](https://guojianzhu.com/) and my personal email is **jianzhu.guo@nlpr.ia.ac.cn**. 
 Xiangyu Zhu's homepage is [Xiangyu Zhu (朱翔昱)](http://www.cbsr.ia.ac.cn/users/xiangyuzhu/) and email is **xiangyu.zhu@nlpr.ia.ac.cn**.
+
