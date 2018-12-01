@@ -1,5 +1,9 @@
 #!/usr/bin/env python3
 # coding: utf-8
+import sys
+
+from utils.cv_plot import plot_pose_box
+
 __author__ = 'cleardusk'
 
 """
@@ -9,8 +13,6 @@ The pipeline of 3DDFA prediction: given one image, predict the 3d face vertices,
 0. Dump to obj with texture
 1. CPU optimization: https://pmchojnacki.wordpress.com/2018/10/07/slow-pytorch-cpu-performance
 """
-
-# import modules
 
 import torch
 import torchvision.transforms as transforms
@@ -22,8 +24,11 @@ from utils.ddfa import ToTensorGjz, NormalizeGjz, str2bool
 import scipy.io as sio
 from utils.inference import get_suffix, calc_roi_box, crop_img, predict_68pts, dump_to_ply, dump_vertex, draw_landmarks, \
     predict_dense
+from utils.estimate_pose import parse_pose
 import argparse
 import torch.backends.cudnn as cudnn
+
+STD_SIZE = 120
 
 
 def main(args):
@@ -51,6 +56,7 @@ def main(args):
 
     # 3. forward
     tri = sio.loadmat('visualize/tri.mat')['tri']
+    transform = transforms.Compose([ToTensorGjz(), NormalizeGjz(mean=127.5, std=128)])
     for img_fp in args.files:
         img_ori = cv2.imread(img_fp)
         if args.dlib_bbox:
@@ -67,22 +73,21 @@ def main(args):
                 rect = dlib.rectangle(l, r, t, b)
                 rects.append(rect)
 
-        pts_dlib = []
         pts_res = []
+        Ps = []  # Camera matrix collection
+        poses = []  # pose collection, [todo: validate it]
         ind = 0
         suffix = get_suffix(img_fp)
         for rect in rects:
             # landmark & crop
             pts = face_regressor(img_ori, rect).parts()
             pts = np.array([[pt.x, pt.y] for pt in pts]).T
-            pts_dlib.append(pts)
 
             roi_box = calc_roi_box(pts)
             img = crop_img(img_ori, roi_box)
 
             # forward: one step
-            img = cv2.resize(img, dsize=(120, 120), interpolation=cv2.INTER_LINEAR)
-            transform = transforms.Compose([ToTensorGjz(), NormalizeGjz(mean=127.5, std=128)])
+            img = cv2.resize(img, dsize=(STD_SIZE, STD_SIZE), interpolation=cv2.INTER_LINEAR)
             input = transform(img).unsqueeze(0)
             with torch.no_grad():
                 if args.mode == 'gpu':
@@ -97,16 +102,20 @@ def main(args):
             if args.box_init == 'two':
                 roi_box = calc_roi_box(pts68)
                 img_step2 = crop_img(img_ori, roi_box)
-                img_step2 = cv2.resize(img_step2, dsize=(120, 120), interpolation=cv2.INTER_LINEAR)
+                img_step2 = cv2.resize(img_step2, dsize=(STD_SIZE, STD_SIZE), interpolation=cv2.INTER_LINEAR)
                 input = transform(img_step2).unsqueeze(0)
                 with torch.no_grad():
                     if args.mode == 'gpu':
                         input = input.cuda()
                     param = model(input)
                     param = param.squeeze().cpu().numpy().flatten().astype(np.float32)
+
                 pts68 = predict_68pts(param, roi_box)
 
             pts_res.append(pts68)
+            P, pose = parse_pose(param)
+            Ps.append(P)
+            poses.append(pose)
 
             # dense face vertices
             if args.dump_ply or args.dump_vertex:
@@ -123,8 +132,14 @@ def main(args):
                 wfp = '{}_{}.roibox'.format(img_fp.replace(suffix, ''), ind)
                 np.savetxt(wfp, roi_box, fmt='%.3f')
                 print('Save roi box to {}'.format(wfp))
-
             ind += 1
+
+        if args.dump_pose:
+            # P, pose = parse_pose(param)  # Camera matrix (without scale), and pose (yaw, pitch, roll, to verify)
+            img_pose = plot_pose_box(img_ori, Ps, pts_res)
+            wfp = img_fp.replace(suffix, '_pose.jpg')
+            cv2.imwrite(wfp, img_pose)
+            print('Dump to {}'.format(wfp))
         if args.dump_res:
             draw_landmarks(img_ori, pts_res, wfp=img_fp.replace(suffix, '_3DDFA.jpg'), show_flg=args.show_flg)
 
@@ -137,11 +152,12 @@ if __name__ == '__main__':
     parser.add_argument('--show_flg', default='True', type=str2bool, help='whether show the visualization result')
     parser.add_argument('--box_init', default='one', type=str, help='one|two: one-step bbox initialization or two-step')
     parser.add_argument('--dump_res', default='true', type=str2bool, help='whether write out the visualization image')
-    parser.add_argument('--dump_vertex', default='true', type=str2bool,
+    parser.add_argument('--dump_vertex', default='false', type=str2bool,
                         help='whether write out the dense face vertices to mat')
     parser.add_argument('--dump_ply', default='true', type=str2bool)
     parser.add_argument('--dump_pts', default='true', type=str2bool)
     parser.add_argument('--dump_roi_box', default='false', type=str2bool)
+    parser.add_argument('--dump_pose', default='true', type=str2bool)
     parser.add_argument('--dlib_bbox', default='true', type=str2bool, help='whether use dlib to predict bbox')
 
     args = parser.parse_args()

@@ -8,6 +8,7 @@
 
 **\[Updates\]**
 
+ - `2018.12.1`: Add pose estimation and refine code, see [utils/estimate_pose.py](./utils/estimate_pose.py) for more details.
  - `2018.11.17`: Refine code and map the 3d vertex to original image space.
  - `2018.11.11`: **Update end-to-end inference pipeline: infer/serialize 3D face shape and 68 landmarks given one arbitrary image, please see readme.md below for more details.**
  - `2018.11.9`: Update trained model with higher performance in [models](./models).
@@ -76,12 +77,11 @@ In addition, I strongly recommend using Python3.6+ instead of older version for 
     ```
     If you can see these output log in terminal, you run it successfully.
     ```
-    Dump to samples/test1_0.ply
-    Dump to samples/test1_0.mat
+    Dump tp samples/test1_0.ply
     Save 68 3d landmarks to samples/test1_0.txt
-    Dump to samples/test1_1.ply
-    Dump to samples/test1_1.mat
+    Dump tp samples/test1_1.ply
     Save 68 3d landmarks to samples/test1_1.txt
+    Dump to samples/test1_pose.jpg
     Save visualization result to samples/test1_3DDFA.jpg
     ```
 
@@ -89,10 +89,14 @@ In addition, I strongly recommend using Python3.6+ instead of older version for 
 
     Please run `python3 main.py -h` or review the code for more details.
 
-    The result `samples/test1_3DDFA.jpg` is shown below
+    The 68 landmarks visualization result `samples/test1_3DDFA.jpg` and pose estimation result `samples/test1_pose.jpg` are shown below
 
 <p align="center">
-  <img src="samples/test1_3DDFA.jpg" alt="samples" width="700px">
+  <img src="samples/test1_3DDFA.jpg" alt="samples" width="650px">
+</p>
+
+<p align="center">
+  <img src="samples/test1_pose.jpg" alt="samples" width="650px">
 </p>
 
 3. Additional example
@@ -102,7 +106,11 @@ In addition, I strongly recommend using Python3.6+ instead of older version for 
     ```
 
 <p align="center">
-  <img src="samples/emma_input_3DDFA.jpg" alt="samples" width="700px">
+  <img src="samples/emma_input_3DDFA.jpg" alt="samples" width="750px">
+</p>
+
+<p align="center">
+  <img src="samples/emma_input_pose.jpg" alt="samples" width="750px">
 </p>
 
 ## Citation
@@ -122,8 +130,6 @@ In addition, I strongly recommend using Python3.6+ instead of older version for 
     }
 
     
-
-
 ## Inference speed
 When batch size is 128, the inference time of MobileNet-V1 takes about 34.7ms. The average speed is about **0.27ms/pic**.
 

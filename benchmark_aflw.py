@@ -1,11 +1,8 @@
 #!/usr/bin/env python3
 # coding: utf-8
 
-import os
 import os.path as osp
 import numpy as np
-import sys
-from glob import glob
 from math import sqrt
 from utils.io import _load
 

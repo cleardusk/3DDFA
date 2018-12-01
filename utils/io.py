@@ -9,8 +9,9 @@ import scipy.io as sio
 
 
 def mkdir(d):
+    """only works on *nix system"""
     if not os.path.isdir(d) and not os.path.exists(d):
-        os.system(f'mkdir -p {d}')
+        os.system('mkdir -p {}'.format(d))
 
 
 def _get_suffix(filename):
@@ -36,7 +37,7 @@ def _dump(wfp, obj):
     elif suffix == 'pkl':
         pickle.dump(obj, open(wfp, 'wb'))
     else:
-        raise Exception(f'Unknown Type: {suffix}')
+        raise Exception('Unknown Type: {}'.format(suffix))
 
 
 def _load_tensor(fp, mode='cpu'):

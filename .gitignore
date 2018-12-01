@@ -1,6 +1,7 @@
 .idea/
 *.pyc
 __pycache__/
+utils/__pycache__/
 test.data/
 training/snapshot/
 training/logs/
@@ -21,5 +22,3 @@ models/shape_predictor_68_face_landmarks.dat
 
 demo_obama/
 todo.md
-
-utils/__pycacje__/
