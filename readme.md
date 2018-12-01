@@ -32,14 +32,19 @@ Several results on ALFW-2000 dataset (inferenced from model *phase1_wpdc_vdc.pth
 </p>
 
 ## Applications
-### Face Alignment
+#### 1. Face Alignment
 <p align="center">
   <img src="samples/dapeng_3DDFA_trim.gif" alt="dapeng">
 </p>
 
-### Face Reconstruction
+#### 2. Face Reconstruction
 <p align="center">
-  <img src="samples/5.png" alt="dapeng" width="750px">
+  <img src="samples/5.png" alt="demo" width="750px">
+</p>
+
+#### 3. 3D Pose Estimation
+<p align="center">
+  <img src="samples/pose.png" alt="tongliya" width="750px">
 </p>
 
 ## Getting started
