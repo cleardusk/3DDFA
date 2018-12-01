@@ -6,7 +6,7 @@ import numpy as np
 from math import sqrt
 import scipy.io as sio
 import matplotlib.pyplot as plt
-from ddfa_utils import reconstruct_vertex
+from .ddfa import reconstruct_vertex
 
 
 def get_suffix(filename):
@@ -97,7 +97,7 @@ def dump_to_ply(vertex, tri, wfp):
 
 def dump_vertex(vertex, wfp):
     sio.savemat(wfp, {'vertex': vertex})
-    print('Dump tp {}'.format(wfp))
+    print('Dump to {}'.format(wfp))
 
 
 def _predict_vertices(param, roi_box, dense):

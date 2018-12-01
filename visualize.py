@@ -2,14 +2,12 @@
 # coding: utf-8
 
 from benchmark import extract_param
-from ddfa_utils import reconstruct_vertex
-from io_utils import _dump, _load
+from utils.ddfa import reconstruct_vertex
+from utils.io import _dump, _load
 import os.path as osp
 from skimage import io
 import matplotlib.pyplot as plt
 from benchmark_aflw2000 import convert_to_ori
-from mpl_toolkits.mplot3d import Axes3D
-import cv2
 import scipy.io as sio
 
 

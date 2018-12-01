@@ -76,11 +76,11 @@ In addition, I strongly recommend using Python3.6+ instead of older version for 
     ```
     If you can see these output log in terminal, you run it successfully.
     ```
-    Dump tp samples/test1_0.ply
-    Dump tp samples/test1_0.mat
+    Dump to samples/test1_0.ply
+    Dump to samples/test1_0.mat
     Save 68 3d landmarks to samples/test1_0.txt
-    Dump tp samples/test1_1.ply
-    Dump tp samples/test1_1.mat
+    Dump to samples/test1_1.ply
+    Dump to samples/test1_1.mat
     Save 68 3d landmarks to samples/test1_1.txt
     Save visualization result to samples/test1_3DDFA.jpg
     ```

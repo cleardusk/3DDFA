@@ -18,9 +18,9 @@ import mobilenet_v1
 import numpy as np
 import cv2
 import dlib
-from ddfa_utils import ToTensorGjz, NormalizeGjz, str2bool
+from utils.ddfa import ToTensorGjz, NormalizeGjz, str2bool
 import scipy.io as sio
-from inference_utils import get_suffix, calc_roi_box, crop_img, predict_68pts, dump_to_ply, dump_vertex, draw_landmarks, \
+from utils.inference import get_suffix, calc_roi_box, crop_img, predict_68pts, dump_to_ply, dump_vertex, draw_landmarks, \
     predict_dense
 import argparse
 import torch.backends.cudnn as cudnn

@@ -4,7 +4,7 @@
 import os.path as osp
 import numpy as np
 from math import sqrt
-from io_utils import _load
+from utils.io import _load
 
 d = 'test.configs'
 yaws_list = _load(osp.join(d, 'AFLW2000-3D.pose.npy'))
