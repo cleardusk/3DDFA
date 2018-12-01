@@ -15,9 +15,9 @@ from torch.utils.data import DataLoader
 import mobilenet_v1
 import torch.backends.cudnn as cudnn
 
-from ddfa_utils import DDFADataset, ToTensorGjz, NormalizeGjz
-from ddfa_utils import str2bool, AverageMeter
-from io_utils import mkdir
+from utils.ddfa import DDFADataset, ToTensorGjz, NormalizeGjz
+from utils.ddfa import str2bool, AverageMeter
+from utils.io import mkdir
 from vdc_loss import VDCLoss
 from wpdc_loss import WPDCLoss
 

@@ -4,7 +4,7 @@
 import torch
 import torch.nn as nn
 from math import sqrt
-from io_utils import _load, _numpy_to_cuda, _numpy_to_tensor, _load_gpu
+from utils.io import _load, _numpy_to_cuda, _numpy_to_tensor, _load_gpu
 from params import *
 
 _to_tensor = _numpy_to_cuda  # gpu

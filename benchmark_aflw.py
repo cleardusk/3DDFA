@@ -7,7 +7,7 @@ import numpy as np
 import sys
 from glob import glob
 from math import sqrt
-from io_utils import _load
+from utils.io import _load
 
 d = 'test.configs'
 yaw_list = _load(osp.join(d, 'AFLW_GT_crop_yaws.npy'))

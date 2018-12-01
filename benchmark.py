@@ -15,7 +15,7 @@ from benchmark_aflw2000 import ana as ana_alfw2000
 from benchmark_aflw import calc_nme as calc_nme_alfw
 from benchmark_aflw import ana as ana_aflw
 
-from ddfa_utils import ToTensorGjz, NormalizeGjz, DDFATestDataset, reconstruct_vertex
+from utils.ddfa import ToTensorGjz, NormalizeGjz, DDFATestDataset, reconstruct_vertex
 import argparse
 
 

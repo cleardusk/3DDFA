@@ -10,7 +10,7 @@ import torch.utils.data as data
 import cv2
 import pickle
 import argparse
-from io_utils import _numpy_to_tensor, _load_cpu, _load_gpu
+from .io import _numpy_to_tensor, _load_cpu, _load_gpu
 from params import *
 
 
