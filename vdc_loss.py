@@ -4,7 +4,7 @@
 import torch
 import torch.nn as nn
 from utils.io import _load, _numpy_to_cuda, _numpy_to_tensor
-from params import *
+from utils.params import *
 
 _to_tensor = _numpy_to_cuda  # gpu
 

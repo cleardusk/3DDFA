@@ -50,6 +50,15 @@ def crop_img(img, roi_box):
     return res
 
 
+def calc_hypotenuse(pts):
+    bbox = [min(pts[0, :]), min(pts[1, :]), max(pts[0, :]), max(pts[1, :])]
+    center = [(bbox[0] + bbox[2]) / 2, (bbox[1] + bbox[3]) / 2]
+    radius = max(bbox[2] - bbox[0], bbox[3] - bbox[1]) / 2
+    bbox = [center[0] - radius, center[1] - radius, center[0] + radius, center[1] + radius]
+    llength = sqrt((bbox[2] - bbox[0]) ** 2 + (bbox[3] - bbox[1]) ** 2)
+    return llength / 3
+
+
 def calc_roi_box(pts):
     bbox = [min(pts[0, :]), min(pts[1, :]), max(pts[0, :]), max(pts[1, :])]
     center = [(bbox[0] + bbox[2]) / 2, (bbox[1] + bbox[3]) / 2]
@@ -100,7 +109,7 @@ def dump_vertex(vertex, wfp):
     print('Dump to {}'.format(wfp))
 
 
-def _predict_vertices(param, roi_box, dense):
+def _predict_vertices(param, roi_box, dense, transform=True):
     vertex = reconstruct_vertex(param, dense=dense)
     sx, sy, ex, ey = roi_box
     scale_x = (ex - sx) / 120
@@ -123,9 +132,12 @@ def predict_dense(param, roi_box):
 
 
 def draw_landmarks(img, pts, style='fancy', wfp=None, show_flg=False, **kwargs):
-    """Draw landmarks using matpliotlib"""
-    plt.figure(figsize=(12, 8))
+    """Draw landmarks using matplotlib"""
+    height, width = img.shape[:2]
+    plt.figure(figsize=(12, height / width * 12))
     plt.imshow(img[:, :, ::-1])
+    plt.subplots_adjust(left=0, right=1, top=1, bottom=0)
+    plt.axis('off')
 
     if not type(pts) in [tuple, list]:
         pts = [pts]
@@ -158,10 +170,8 @@ def draw_landmarks(img, pts, style='fancy', wfp=None, show_flg=False, **kwargs):
                          color=color,
                          markeredgecolor=markeredgecolor, alpha=alpha)
 
-    plt.axis('off')
-    plt.tight_layout()
     if wfp is not None:
-        plt.savefig(wfp, dpi=200, bbox_inches='tight', pad_inches=0, transparent=True)
+        plt.savefig(wfp, dpi=200)
         print('Save visualization result to {}'.format(wfp))
     if show_flg:
         plt.show()
