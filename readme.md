@@ -8,7 +8,8 @@
 
 **\[Updates\]**
 
- - `2018.12.1`: Add pose estimation and refine code, see [utils/estimate_pose.py](./utils/estimate_pose.py) for more details.
+ - `2018.12.2`: Support landmark-free face cropping, see `dlib_landmark` option.
+ - `2018.12.1`: Refine code and add pose estimation feature, see [utils/estimate_pose.py](./utils/estimate_pose.py) for more details.
  - `2018.11.17`: Refine code and map the 3d vertex to original image space.
  - `2018.11.11`: **Update end-to-end inference pipeline: infer/serialize 3D face shape and 68 landmarks given one arbitrary image, please see readme.md below for more details.**
  - `2018.11.9`: Update trained model with higher performance in [models](./models).
