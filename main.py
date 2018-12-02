@@ -22,8 +22,9 @@ import cv2
 import dlib
 from utils.ddfa import ToTensorGjz, NormalizeGjz, str2bool
 import scipy.io as sio
-from utils.inference import get_suffix, calc_roi_box, crop_img, predict_68pts, dump_to_ply, dump_vertex, draw_landmarks, \
-    predict_dense
+from utils.inference import get_suffix, parse_roi_box_from_landmark, crop_img, predict_68pts, dump_to_ply, dump_vertex, \
+    draw_landmarks, \
+    predict_dense, parse_roi_box_from_bbox
 from utils.estimate_pose import parse_pose
 import argparse
 import torch.backends.cudnn as cudnn
@@ -50,9 +51,11 @@ def main(args):
     model.eval()
 
     # 2. load dlib model for face detection and landmark used for face cropping
-    dlib_landmark_model = 'models/shape_predictor_68_face_landmarks.dat'
-    face_detector = dlib.get_frontal_face_detector()
-    face_regressor = dlib.shape_predictor(dlib_landmark_model)
+    if args.dlib_landmark:
+        dlib_landmark_model = 'models/shape_predictor_68_face_landmarks.dat'
+        face_regressor = dlib.shape_predictor(dlib_landmark_model)
+    if args.dlib_bbox:
+        face_detector = dlib.get_frontal_face_detector()
 
     # 3. forward
     tri = sio.loadmat('visualize/tri.mat')['tri']
@@ -79,11 +82,17 @@ def main(args):
         ind = 0
         suffix = get_suffix(img_fp)
         for rect in rects:
-            # landmark & crop
-            pts = face_regressor(img_ori, rect).parts()
-            pts = np.array([[pt.x, pt.y] for pt in pts]).T
+            # whether use dlib landmark to crop image, if not, use only face bbox to calc roi bbox for cropping
+            if args.dlib_landmark:
+                # - use landmark for cropping
+                pts = face_regressor(img_ori, rect).parts()
+                pts = np.array([[pt.x, pt.y] for pt in pts]).T
+                roi_box = parse_roi_box_from_landmark(pts)
+            else:
+                # - use detected face bbox
+                bbox = [rect.left(), rect.top(), rect.right(), rect.bottom()]
+                roi_box = parse_roi_box_from_bbox(bbox)
 
-            roi_box = calc_roi_box(pts)
             img = crop_img(img_ori, roi_box)
 
             # forward: one step
@@ -100,7 +109,7 @@ def main(args):
 
             # two-step for more accurate bbox to crop face
             if args.box_init == 'two':
-                roi_box = calc_roi_box(pts68)
+                roi_box = parse_roi_box_from_landmark(pts68)
                 img_step2 = crop_img(img_ori, roi_box)
                 img_step2 = cv2.resize(img_step2, dsize=(STD_SIZE, STD_SIZE), interpolation=cv2.INTER_LINEAR)
                 input = transform(img_step2).unsqueeze(0)
@@ -159,6 +168,8 @@ if __name__ == '__main__':
     parser.add_argument('--dump_roi_box', default='false', type=str2bool)
     parser.add_argument('--dump_pose', default='true', type=str2bool)
     parser.add_argument('--dlib_bbox', default='true', type=str2bool, help='whether use dlib to predict bbox')
+    parser.add_argument('--dlib_landmark', default='true', type=str2bool,
+                        help='whether use dlib landmark to crop image')
 
     args = parser.parse_args()
     main(args)
