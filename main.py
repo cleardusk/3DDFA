@@ -108,7 +108,7 @@ def main(args):
             pts68 = predict_68pts(param, roi_box)
 
             # two-step for more accurate bbox to crop face
-            if args.box_init == 'two':
+            if args.bbox_init == 'two':
                 roi_box = parse_roi_box_from_landmark(pts68)
                 img_step2 = crop_img(img_ori, roi_box)
                 img_step2 = cv2.resize(img_step2, dsize=(STD_SIZE, STD_SIZE), interpolation=cv2.INTER_LINEAR)
@@ -159,7 +159,7 @@ if __name__ == '__main__':
                         help='image files paths fed into network, single or multiple images')
     parser.add_argument('-m', '--mode', default='cpu', type=str, help='gpu or cpu mode')
     parser.add_argument('--show_flg', default='True', type=str2bool, help='whether show the visualization result')
-    parser.add_argument('--box_init', default='one', type=str, help='one|two: one-step bbox initialization or two-step')
+    parser.add_argument('--bbox_init', default='one', type=str, help='one|two: one-step bbox initialization or two-step')
     parser.add_argument('--dump_res', default='true', type=str2bool, help='whether write out the visualization image')
     parser.add_argument('--dump_vertex', default='false', type=str2bool,
                         help='whether write out the dense face vertices to mat')
