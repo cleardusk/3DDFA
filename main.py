@@ -1,8 +1,5 @@
 #!/usr/bin/env python3
 # coding: utf-8
-import sys
-
-from utils.cv_plot import plot_pose_box
 
 __author__ = 'cleardusk'
 
@@ -23,8 +20,8 @@ import dlib
 from utils.ddfa import ToTensorGjz, NormalizeGjz, str2bool
 import scipy.io as sio
 from utils.inference import get_suffix, parse_roi_box_from_landmark, crop_img, predict_68pts, dump_to_ply, dump_vertex, \
-    draw_landmarks, \
-    predict_dense, parse_roi_box_from_bbox
+    draw_landmarks, predict_dense, parse_roi_box_from_bbox
+from utils.cv_plot import plot_pose_box
 from utils.estimate_pose import parse_pose
 import argparse
 import torch.backends.cudnn as cudnn
@@ -159,7 +156,8 @@ if __name__ == '__main__':
                         help='image files paths fed into network, single or multiple images')
     parser.add_argument('-m', '--mode', default='cpu', type=str, help='gpu or cpu mode')
     parser.add_argument('--show_flg', default='True', type=str2bool, help='whether show the visualization result')
-    parser.add_argument('--bbox_init', default='one', type=str, help='one|two: one-step bbox initialization or two-step')
+    parser.add_argument('--bbox_init', default='one', type=str,
+                        help='one|two: one-step bbox initialization or two-step')
     parser.add_argument('--dump_res', default='true', type=str2bool, help='whether write out the visualization image')
     parser.add_argument('--dump_vertex', default='false', type=str2bool,
                         help='whether write out the dense face vertices to mat')
