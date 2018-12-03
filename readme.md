@@ -8,7 +8,7 @@
 
 **\[Updates\]**
 
- - `2018.12.4`: **This repo not maintained anymore, but welcome for PRs. See [#issue 32](https://github.com/cleardusk/3DDFA/issues/32) for more details.**
+ - `2018.12.4`: **This repo is not maintained anymore, but welcome for PRs. See [#issue 32](https://github.com/cleardusk/3DDFA/issues/32) for more details.**
  - `2018.12.2`: Support landmark-free face cropping, see `dlib_landmark` option.
  - `2018.12.1`: Refine code and add pose estimation feature, see [utils/estimate_pose.py](./utils/estimate_pose.py) for more details.
  - `2018.11.17`: Refine code and map the 3d vertex to original image space.
