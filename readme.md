@@ -20,6 +20,9 @@
 
 - [ ] Depth image estimation
 - [ ] Face swapping
+- [ ] PNCC (Projected Normalized Coordinate Code)
+- [ ] PAC (Pose Adaptive Convolution)
+- [ ] Face Profiling
 
 ## Introduction
 This repo holds the pytorch improved re-implementation of paper [Face Alignment in Full Pose Range: A 3D Total Solution](https://arxiv.org/abs/1804.01005). Several additional works are added in this repo, including real-time training, training strategy and so on. Therefore, this repo is far more than re-implementation. One related blog will be published for some important technique details in future.
