@@ -8,7 +8,6 @@
 
 **\[Updates\]**
 
- - `2018.12.4`: **Due to my limited time, I am looking forward for significant PRs to add more features.**
  - `2018.12.2`: Support landmark-free face cropping, see `dlib_landmark` option.
  - `2018.12.1`: Refine code and add pose estimation feature, see [utils/estimate_pose.py](./utils/estimate_pose.py) for more details.
  - `2018.11.17`: Refine code and map the 3d vertex to original image space.
@@ -16,6 +15,11 @@
  - `2018.11.9`: Update trained model with higher performance in [models](./models).
  - `2018.10.4`: Add Matlab face mesh rendering demo in [visualize](./visualize).
  - `2018.9.9`: Add pre-process of face cropping in [benchmark](./benchmark).
+
+**\[Todo\]**
+
+- [ ] Depth image estimation
+- [ ] Face swapping
 
 ## Introduction
 This repo holds the pytorch improved re-implementation of paper [Face Alignment in Full Pose Range: A 3D Total Solution](https://arxiv.org/abs/1804.01005). Several additional works are added in this repo, including real-time training, training strategy and so on. Therefore, this repo is far more than re-implementation. One related blog will be published for some important technique details in future.
@@ -193,7 +197,7 @@ If your work or research benefit from this repo, please cite it and star it 😃
 
 And welcome to focus on my another 3D face related work [MeGlass](https://github.com/cleardusk/MeGlass).
 
-<!-- ## Contact
-My homepage is [Jianzhu Guo (郭建珠)](https://guojianzhu.com/) and my personal email is **jianzhu.guo@nlpr.ia.ac.cn**. 
-Xiangyu Zhu's homepage is [Xiangyu Zhu (朱翔昱)](http://www.cbsr.ia.ac.cn/users/xiangyuzhu/) and email is **xiangyu.zhu@nlpr.ia.ac.cn**. -->
+## Contact
+[Jianzhu Guo (郭建珠)](https://guojianzhu.com/):  **jianzhu.guo@nlpr.ia.ac.cn**. 
 
+[Xiangyu Zhu (朱翔昱)](http://www.cbsr.ia.ac.cn/users/xiangyuzhu/): **xiangyu.zhu@nlpr.ia.ac.cn**.
