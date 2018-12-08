@@ -201,6 +201,6 @@ If your work or research benefit from this repo, please cite it and star it 😃
 And welcome to focus on my another 3D face related work [MeGlass](https://github.com/cleardusk/MeGlass).
 
 ## Contact
-[Jianzhu Guo (郭建珠)](https://guojianzhu.com/):  **jianzhu.guo@nlpr.ia.ac.cn**. 
+**Jianzhu Guo (郭建珠)** [[Homepage](https://guojianzhu.com/), [Google Scholar](https://scholar.google.com/citations?user=W8_JzNcAAAAJ&hl=en&oi=ao)]:  **jianzhu.guo@nlpr.ia.ac.cn**. 
 
-[Xiangyu Zhu (朱翔昱)](http://www.cbsr.ia.ac.cn/users/xiangyuzhu/): **xiangyu.zhu@nlpr.ia.ac.cn**.
+Xiangyu Zhu (朱翔昱): [[Homepage](http://www.cbsr.ia.ac.cn/users/xiangyuzhu/), [Google Scholar](https://scholar.google.com/citations?user=1rbNk5oAAAAJ&hl=en&oi=ao)]: **xiangyu.zhu@nlpr.ia.ac.cn**.
