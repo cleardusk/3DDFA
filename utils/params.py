@@ -32,3 +32,9 @@ u_base = u[keypoints].reshape(-1, 1)
 w_shp_base = w_shp[keypoints]
 w_exp_base = w_exp[keypoints]
 std_size = 120
+
+# for paf (pac)
+paf = _load(osp.join(d, 'Model_PAF.pkl'))
+u_filter = paf.get('mu_filter')
+w_filter = paf.get('w_filter')
+w_exp_filter = paf.get('w_exp_filter')

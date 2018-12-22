@@ -124,9 +124,9 @@ def dump_vertex(vertex, wfp):
     print('Dump to {}'.format(wfp))
 
 
-def _predict_vertices(param, roi_box, dense, transform=True):
+def _predict_vertices(param, roi_bbox, dense, transform=True):
     vertex = reconstruct_vertex(param, dense=dense)
-    sx, sy, ex, ey = roi_box
+    sx, sy, ex, ey = roi_bbox
     scale_x = (ex - sx) / 120
     scale_y = (ey - sy) / 120
     vertex[0, :] = vertex[0, :] * scale_x + sx
@@ -190,6 +190,36 @@ def draw_landmarks(img, pts, style='fancy', wfp=None, show_flg=False, **kwargs):
         print('Save visualization result to {}'.format(wfp))
     if show_flg:
         plt.show()
+
+
+def get_colors(image, vertices):
+    [h, w, _] = image.shape
+    vertices[0, :] = np.minimum(np.maximum(vertices[0, :], 0), w - 1)  # x
+    vertices[1, :] = np.minimum(np.maximum(vertices[1, :], 0), h - 1)  # y
+    ind = np.round(vertices).astype(np.int32)
+    colors = image[ind[1, :], ind[0, :], :]  # n x 3
+
+    return colors
+
+
+def write_obj_with_colors(obj_name, vertices, triangles, colors):
+    triangles = triangles.copy() # meshlab start with 1
+
+    if obj_name.split('.')[-1] != 'obj':
+        obj_name = obj_name + '.obj'
+
+    # write obj
+    with open(obj_name, 'w') as f:
+        # write vertices & colors
+        for i in range(vertices.shape[1]):
+            s = 'v {:.4f} {:.4f} {:.4f} {} {} {}\n'.format(vertices[1, i], vertices[0, i], vertices[2, i], colors[i, 2],
+                                               colors[i, 1], colors[i, 0])
+            f.write(s)
+
+        # write f: ver ind/ uv ind
+        for i in range(triangles.shape[1]):
+            s = 'f {} {} {}\n'.format(triangles[0, i], triangles[1, i], triangles[2, i])
+            f.write(s)
 
 
 def main():

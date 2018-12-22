@@ -11,7 +11,17 @@ import cv2
 import pickle
 import argparse
 from .io import _numpy_to_tensor, _load_cpu, _load_gpu
-from utils.params import *
+from .params import *
+
+
+def _parse_param(param):
+    """Work for both numpy and tensor"""
+    p_ = param[:12].reshape(3, -1)
+    p = p_[:, :3]
+    offset = p_[:, -1].reshape(3, 1)
+    alpha_shp = param[12:52].reshape(-1, 1)
+    alpha_exp = param[52:].reshape(-1, 1)
+    return p, offset, alpha_shp, alpha_exp
 
 
 def reconstruct_vertex(param, whitening=True, dense=False, transform=True):
@@ -28,11 +38,8 @@ def reconstruct_vertex(param, whitening=True, dense=False, transform=True):
         else:
             param = np.concatenate((param[:11], [0], param[11:]))
             param = param * param_std + param_mean
-    p_ = param[:12].reshape(3, -1)
-    p = p_[:, :3]
-    offset = p_[:, -1].reshape(3, 1)
-    alpha_shp = param[12:52].reshape(-1, 1)
-    alpha_exp = param[52:].reshape(-1, 1)
+
+    p, offset, alpha_shp, alpha_exp = _parse_param(param)
 
     if dense:
         vertex = p @ (u + w_shp @ alpha_shp + w_exp @ alpha_exp).reshape(3, -1, order='F') + offset
@@ -62,16 +69,6 @@ def str2bool(v):
         return False
     else:
         raise argparse.ArgumentTypeError('Boolean value expected')
-
-
-def _parse_param(param):
-    """Work for both numpy and tensor"""
-    p_ = param[:12].reshape(3, -1)
-    p = p_[:, :3]
-    offset = p_[:, -1].reshape(3, 1)
-    alpha_shp = param[12:52].reshape(-1, 1)
-    alpha_exp = param[52:].reshape(-1, 1)
-    return p, offset, alpha_shp, alpha_exp
 
 
 class AverageMeter(object):
