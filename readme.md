@@ -215,6 +215,7 @@ The training configutations are all presented in bash scripts.
 </p>
 
 2. Face reconstruction
+   
    The texture of non-visible area is distorted due to self-occlusion, therefore the non-visible face region may appear strange (a little horrible).
 
 ## Acknowledgement
