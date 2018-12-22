@@ -30,9 +30,9 @@ This project is authored by [Jianzhu Guo](https://guojianzhu.com), [Xiangyu Zhu]
 ## Introduction
 This repo holds the pytorch improved re-implementation of paper [Face Alignment in Full Pose Range: A 3D Total Solution](https://arxiv.org/abs/1804.01005). Several external works are added in this repo, including real-time training, training strategy and so on. Therefore, this repo is far more than re-implementation. One related blog will be published for some important technique details in future.
 As far, this repo releases the pre-trained first-stage pytorch models of MobileNet-V1 structure, the pre-processed training&testing dataset and codebase.
-It is worth to note that the inference time is about **0.27ms per image** (input batch with 128 images) on GeForce GTX TITAN X. Why not evaluate it on single image? Because most time for single image is spent on function call. The inference speed is equal to MobileNet-V1 with 120x120x3 tensor as input, therefore it is possible to convert to mobile devices.
+It is worth to note that the inference time is about **0.27ms per image** (input batch with 128 images) on GeForce GTX TITAN X. Why not evaluate it on single image? Because most time for single image is spent on function call. The inference speed is equal to MobileNet-V1 with 120x120x3 tensor as input, therefore it is possible to convert to mobile devices.
 
-**This repo will keep updating within my time, and any meaningful issues and PR are welcomed.**
+**This repo will keep updating in my spare time, and any meaningful issues and PR are welcomed.**
 
 Several results on ALFW-2000 dataset (inferenced from model *phase1_wpdc_vdc.pth.tar*) are shown below.
 <p align="center">
@@ -99,8 +99,9 @@ In addition, I strongly recommend using Python3.6+ instead of older version for 
    Then, download dlib landmark pre-trained model in [Google Drive](https://drive.google.com/open?id=1kxgOZSds1HuUIlvo5sRH3PJv377qZAkE) or [Baidu Yun](https://pan.baidu.com/s/1bx-GxGf50-KDk4xz3bCYcw), and put it into `models` directory. (To reduce this repo's size, I remove some large size binary files including this model, so you should download it : ) )
 
 
-2. Build cython module (just one line command)
+2. Build cython module (just one line for building)
    ```
+   cd utils/cython
    python3 setup.py build_ext -i
    ```
    This is for accelerating depth estimation and PNCC render since Python is too slow in for loop.
