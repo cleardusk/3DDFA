@@ -23,6 +23,7 @@ from utils.inference import get_suffix, parse_roi_box_from_landmark, crop_img, p
     draw_landmarks, predict_dense, parse_roi_box_from_bbox
 from utils.cv_plot import plot_pose_box
 from utils.estimate_pose import parse_pose
+from utils.render import get_depths_image
 import argparse
 import torch.backends.cudnn as cudnn
 
@@ -76,6 +77,7 @@ def main(args):
         pts_res = []
         Ps = []  # Camera matrix collection
         poses = []  # pose collection, [todo: validate it]
+        vertices_lst = []  # store multiple face vertices
         ind = 0
         suffix = get_suffix(img_fp)
         for rect in rects:
@@ -123,9 +125,10 @@ def main(args):
             Ps.append(P)
             poses.append(pose)
 
-            # dense face vertices
-            if args.dump_ply or args.dump_vertex:
+            # dense face 3d vertices
+            if args.dump_ply or args.dump_vertex or args.dump_depth:
                 vertices = predict_dense(param, roi_box)
+                vertices_lst.append(vertices)
             if args.dump_ply:
                 dump_to_ply(vertices, tri, '{}_{}.ply'.format(img_fp.replace(suffix, ''), ind))
             if args.dump_vertex:
@@ -148,6 +151,10 @@ def main(args):
             print('Dump to {}'.format(wfp))
         if args.dump_res:
             draw_landmarks(img_ori, pts_res, wfp=img_fp.replace(suffix, '_3DDFA.jpg'), show_flg=args.show_flg)
+        if args.dump_depth:
+            wfp = img_fp.replace(suffix, '_depth.png')
+            depths_img = get_depths_image(img_ori, vertices_lst, tri-1)
+            cv2.imwrite(wfp, depths_img)
 
 
 if __name__ == '__main__':
@@ -155,7 +162,7 @@ if __name__ == '__main__':
     parser.add_argument('-f', '--files', nargs='+',
                         help='image files paths fed into network, single or multiple images')
     parser.add_argument('-m', '--mode', default='cpu', type=str, help='gpu or cpu mode')
-    parser.add_argument('--show_flg', default='True', type=str2bool, help='whether show the visualization result')
+    parser.add_argument('--show_flg', default='true', type=str2bool, help='whether show the visualization result')
     parser.add_argument('--bbox_init', default='one', type=str,
                         help='one|two: one-step bbox initialization or two-step')
     parser.add_argument('--dump_res', default='true', type=str2bool, help='whether write out the visualization image')
@@ -165,6 +172,7 @@ if __name__ == '__main__':
     parser.add_argument('--dump_pts', default='true', type=str2bool)
     parser.add_argument('--dump_roi_box', default='false', type=str2bool)
     parser.add_argument('--dump_pose', default='true', type=str2bool)
+    parser.add_argument('--dump_depth', default='false', type=str2bool)
     parser.add_argument('--dlib_bbox', default='true', type=str2bool, help='whether use dlib to predict bbox')
     parser.add_argument('--dlib_landmark', default='true', type=str2bool,
                         help='whether use dlib landmark to crop image')
