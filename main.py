@@ -7,7 +7,6 @@ __author__ = 'cleardusk'
 The pipeline of 3DDFA prediction: given one image, predict the 3d face vertices, 68 landmarks and visualization.
 
 [todo]
-0. Dump to obj with texture
 1. CPU optimization: https://pmchojnacki.wordpress.com/2018/10/07/slow-pytorch-cpu-performance
 """
 
@@ -20,10 +19,11 @@ import dlib
 from utils.ddfa import ToTensorGjz, NormalizeGjz, str2bool
 import scipy.io as sio
 from utils.inference import get_suffix, parse_roi_box_from_landmark, crop_img, predict_68pts, dump_to_ply, dump_vertex, \
-    draw_landmarks, predict_dense, parse_roi_box_from_bbox
+    draw_landmarks, predict_dense, parse_roi_box_from_bbox, get_colors, write_obj_with_colors
 from utils.cv_plot import plot_pose_box
 from utils.estimate_pose import parse_pose
-from utils.render import get_depths_image
+from utils.render import get_depths_image, cget_depths_image, cpncc
+from utils.paf import gen_img_paf
 import argparse
 import torch.backends.cudnn as cudnn
 
@@ -126,7 +126,7 @@ def main(args):
             poses.append(pose)
 
             # dense face 3d vertices
-            if args.dump_ply or args.dump_vertex or args.dump_depth:
+            if args.dump_ply or args.dump_vertex or args.dump_depth or args.dump_pncc or args.dump_obj:
                 vertices = predict_dense(param, roi_box)
                 vertices_lst.append(vertices)
             if args.dump_ply:
@@ -141,6 +141,19 @@ def main(args):
                 wfp = '{}_{}.roibox'.format(img_fp.replace(suffix, ''), ind)
                 np.savetxt(wfp, roi_box, fmt='%.3f')
                 print('Save roi box to {}'.format(wfp))
+            if args.dump_paf:
+                wfp_paf = '{}_{}_paf.jpg'.format(img_fp.replace(suffix, ''), ind)
+                wfp_crop = '{}_{}_crop.jpg'.format(img_fp.replace(suffix, ''), ind)
+                paf_feature = gen_img_paf(img_crop=img, param=param, kernel_size=args.paf_size)
+
+                cv2.imwrite(wfp_paf, paf_feature)
+                cv2.imwrite(wfp_crop, img)
+                print('Dump to {} and {}'.format(wfp_crop, wfp_paf))
+            if args.dump_obj:
+                wfp = '{}_{}.obj'.format(img_fp.replace(suffix, ''), ind)
+                colors = get_colors(img_ori, vertices)
+                write_obj_with_colors(wfp, vertices, tri, colors)
+                print('Dump obj with sampled texture to {}'.format(wfp))
             ind += 1
 
         if args.dump_pose:
@@ -149,12 +162,19 @@ def main(args):
             wfp = img_fp.replace(suffix, '_pose.jpg')
             cv2.imwrite(wfp, img_pose)
             print('Dump to {}'.format(wfp))
-        if args.dump_res:
-            draw_landmarks(img_ori, pts_res, wfp=img_fp.replace(suffix, '_3DDFA.jpg'), show_flg=args.show_flg)
         if args.dump_depth:
             wfp = img_fp.replace(suffix, '_depth.png')
-            depths_img = get_depths_image(img_ori, vertices_lst, tri-1)
+            # depths_img = get_depths_image(img_ori, vertices_lst, tri-1)  # python version
+            depths_img = cget_depths_image(img_ori, vertices_lst, tri - 1)  # cython version
             cv2.imwrite(wfp, depths_img)
+            print('Dump to {}'.format(wfp))
+        if args.dump_pncc:
+            wfp = img_fp.replace(suffix, '_pncc.png')
+            pncc_feature = cpncc(img_ori, vertices_lst, tri - 1)  # cython version
+            cv2.imwrite(wfp, pncc_feature[:, :, ::-1])  # cv2.imwrite will swap RGB -> BGR
+            print('Dump to {}'.format(wfp))
+        if args.dump_res:
+            draw_landmarks(img_ori, pts_res, wfp=img_fp.replace(suffix, '_3DDFA.jpg'), show_flg=args.show_flg)
 
 
 if __name__ == '__main__':
@@ -172,7 +192,11 @@ if __name__ == '__main__':
     parser.add_argument('--dump_pts', default='true', type=str2bool)
     parser.add_argument('--dump_roi_box', default='false', type=str2bool)
     parser.add_argument('--dump_pose', default='true', type=str2bool)
-    parser.add_argument('--dump_depth', default='false', type=str2bool)
+    parser.add_argument('--dump_depth', default='true', type=str2bool)
+    parser.add_argument('--dump_pncc', default='true', type=str2bool)
+    parser.add_argument('--dump_paf', default='false', type=str2bool)
+    parser.add_argument('--paf_size', default=3, type=int, help='PAF feature kernel size')
+    parser.add_argument('--dump_obj', default='true', type=str2bool)
     parser.add_argument('--dlib_bbox', default='true', type=str2bool, help='whether use dlib to predict bbox')
     parser.add_argument('--dlib_landmark', default='true', type=str2bool,
                         help='whether use dlib landmark to crop image')

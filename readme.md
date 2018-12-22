@@ -1,6 +1,7 @@
 # Face Alignment in Full Pose Range: A 3D Total Solution
-
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+
+This project is authored by [Jianzhu Guo](https://guojianzhu.com), [Xiangyu Zhu](http://www.cbsr.ia.ac.cn/users/xiangyuzhu/) and partially supervised by [Zhen Lei](http://www.cbsr.ia.ac.cn/users/zlei/).
 
 <p align="center">
   <img src="samples/obama_three_styles.gif" alt="obama">
@@ -8,6 +9,7 @@
 
 **\[Updates\]**
 
+ - `2018.12.23`: **Add several features: depth image estimation, PNCC, PAF feature and obj serialization.** See `dump_depth`, `dump_pncc`, `dump_paf`, `dump_obj` options for more details.
  - `2018.12.2`: Support landmark-free face cropping, see `dlib_landmark` option.
  - `2018.12.1`: Refine code and add pose estimation feature, see [utils/estimate_pose.py](./utils/estimate_pose.py) for more details.
  - `2018.11.17`: Refine code and map the 3d vertex to original image space.
@@ -18,18 +20,19 @@
 
 **\[Todo\]**
 
-- [ ] Depth image estimation
-- [ ] Face swapping
-- [ ] PNCC (Projected Normalized Coordinate Code)
-- [ ] PAC (Pose Adaptive Convolution)
-- [ ] Face Profiling
+- [x] Depth image estimation.
+- [x] PNCC (Projected Normalized Coordinate Code).
+- [x] PAF (Pose Adaptive Feature).
+- [x] Obj serialization with sampled texture.
+- [ ] Face swapping.
+- [ ] Face Profiling.
 
 ## Introduction
-This repo holds the pytorch improved re-implementation of paper [Face Alignment in Full Pose Range: A 3D Total Solution](https://arxiv.org/abs/1804.01005). Several additional works are added in this repo, including real-time training, training strategy and so on. Therefore, this repo is far more than re-implementation. One related blog will be published for some important technique details in future.
-As far, this repo releases the pre-trained first-stage pytorch models of MobileNet-V1 structure, the training dataset and code.
-And the inference time is about **0.27ms per image** (input batch with 128 images) on GeForce GTX TITAN X.
+This repo holds the pytorch improved re-implementation of paper [Face Alignment in Full Pose Range: A 3D Total Solution](https://arxiv.org/abs/1804.01005). Several external works are added in this repo, including real-time training, training strategy and so on. Therefore, this repo is far more than re-implementation. One related blog will be published for some important technique details in future.
+As far, this repo releases the pre-trained first-stage pytorch models of MobileNet-V1 structure, the pre-processed training&testing dataset and codebase.
+It is worth to note that the inference time is about **0.27ms per image** (input batch with 128 images) on GeForce GTX TITAN X. Why not evaluate it on single image? Because most time for single image is spent on function call. The inference speed is equal to MobileNet-V1 with 120x120x3 tensor as input, therefore it is possible to convert to mobile devices.
 
-**These repo will keep being updated, thus any meaningful issues and PR are welcomed.**
+**This repo will keep updating within my time, and any meaningful issues and PR are welcomed.**
 
 Several results on ALFW-2000 dataset (inferenced from model *phase1_wpdc_vdc.pth.tar*) are shown below.
 <p align="center">
@@ -40,7 +43,7 @@ Several results on ALFW-2000 dataset (inferenced from model *phase1_wpdc_vdc.pth
   <img src="imgs/vertex_3d.jpg" alt="Vertex 3D" width="750px">
 </p>
 
-## Applications
+## Applications & Features
 #### 1. Face Alignment
 <p align="center">
   <img src="samples/dapeng_3DDFA_trim.gif" alt="dapeng">
@@ -56,19 +59,30 @@ Several results on ALFW-2000 dataset (inferenced from model *phase1_wpdc_vdc.pth
   <img src="samples/pose.png" alt="tongliya" width="750px">
 </p>
 
+#### 4. Depth Image Estimation
+<p align="center">
+  <img src="samples/demo_depth.jpg" alt="demo_depth" width="750px">
+</p>
+
+#### 5. PNCC & PAF Features
+<p align="center">
+  <img src="samples/demo_pncc_paf.jpg" alt="demo_pncc_paf" width="800px">
+</p>
+
 ## Getting started
 ### Requirements
  - PyTorch >= 0.4.1
  - Python >= 3.6 (Numpy, Scipy, Matplotlib)
- - Dlib (Dlib is used for detecting face and landmarks. There is no need to use Dlib if you can provide face bouding bbox and landmarks. Optionally, you can use the two-step inference strategy without initialized landmarks.)
+ - Dlib (Dlib is optionally for face and landmarks detection. There is no need to use Dlib if you can provide face bouding bbox and landmarks. Besides, you can try the two-step inference strategy without initialized landmarks.)
  - OpenCV (Python version, for image IO opertations.)
- - Platform: Linux or macOS (Windows is not tested)
+ - Cython (For accelerating depth and PNCC render.)
+ - Platform: Linux or macOS (Windows is not tested.)
 
  ```
  # installation structions
  sudo pip3 install torch torchvision # for cpu version. more option to see https://pytorch.org
  sudo pip3 install numpy scipy matplotlib
- sudo pip3 install dlib==19.5.0 # 19.15+ version may cause conflict with pytorch, this may take several minutes
+ sudo pip3 install dlib==19.5.0 # 19.15+ version may cause conflict with pytorch in Linux, this may take several minutes
  sudo pip3 install opencv-python
  ```
 
@@ -82,10 +96,17 @@ In addition, I strongly recommend using Python3.6+ instead of older version for 
     cd 3DDFA
     ```
 
-   Then, download dlib landmark model in [Google Drive](https://drive.google.com/open?id=1kxgOZSds1HuUIlvo5sRH3PJv377qZAkE) or [Baidu Yun](https://pan.baidu.com/s/1bx-GxGf50-KDk4xz3bCYcw), and put it into `models` directory. (To reduce this repo's size, I remove some large size binary files including this model, so you should download it : ) )
+   Then, download dlib landmark pre-trained model in [Google Drive](https://drive.google.com/open?id=1kxgOZSds1HuUIlvo5sRH3PJv377qZAkE) or [Baidu Yun](https://pan.baidu.com/s/1bx-GxGf50-KDk4xz3bCYcw), and put it into `models` directory. (To reduce this repo's size, I remove some large size binary files including this model, so you should download it : ) )
 
+
+2. Build cython module (just one line command)
+   ```
+   python3 setup.py build_ext -i
+   ```
+   This is for accelerating depth estimation and PNCC render since Python is too slow in for loop.
+   
     
-2. Run the `main.py` with arbitrary image as input
+3. Run the `main.py` with arbitrary image as input
     ```
     python3 main.py -f samples/test1.jpg
     ```
@@ -93,17 +114,19 @@ In addition, I strongly recommend using Python3.6+ instead of older version for 
     ```
     Dump tp samples/test1_0.ply
     Save 68 3d landmarks to samples/test1_0.txt
+    Dump obj with sampled texture to samples/test1_0.obj
     Dump tp samples/test1_1.ply
     Save 68 3d landmarks to samples/test1_1.txt
+    Dump obj with sampled texture to samples/test1_1.obj
     Dump to samples/test1_pose.jpg
+    Dump to samples/test1_depth.png
+    Dump to samples/test1_pncc.png
     Save visualization result to samples/test1_3DDFA.jpg
     ```
 
-    Because `test1.jpg` has two faces, there are two `mat` (stores dense face vertices, can be rendered by Matlab, see [visualize](./visualize)) and `ply` files (can be rendered by Meshlab or Microsoft 3D Builder) predicted.
+    Because `test1.jpg` has two faces, there are two `.ply` and `.obj` files (can be rendered by Meshlab or Microsoft 3D Builder) predicted. Depth, PNCC, PAF and pose estimation are all set true by default. Please run `python3 main.py -h` or review the code for more details.
 
-    Please run `python3 main.py -h` or review the code for more details.
-
-    The 68 landmarks visualization result `samples/test1_3DDFA.jpg` and pose estimation result `samples/test1_pose.jpg` are shown below
+    The 68 landmarks visualization result `samples/test1_3DDFA.jpg` and pose estimation result `samples/test1_pose.jpg` are shown below:
 
 <p align="center">
   <img src="samples/test1_3DDFA.jpg" alt="samples" width="650px">
@@ -113,7 +136,7 @@ In addition, I strongly recommend using Python3.6+ instead of older version for 
   <img src="samples/test1_pose.jpg" alt="samples" width="650px">
 </p>
 
-3. Additional example
+4. Additional example
 
     ```
     python3 ./main.py -f samples/emma_input.jpg --bbox_init=two --dlib_bbox=false
@@ -145,7 +168,7 @@ In addition, I strongly recommend using Python3.6+ instead of older version for 
 
     
 ## Inference speed
-When batch size is 128, the inference time of MobileNet-V1 takes about 34.7ms. The average speed is about **0.27ms/pic**.
+When input batch size is 128, the total inference time of MobileNet-V1 takes about 34.7ms. The average speed is about **0.27ms/pic**.
 
 <p align="center">
   <img src="imgs/inference_speed.png" alt="Inference speed" width="600px">
@@ -179,26 +202,28 @@ The training scripts lie in `training` directory. The related resources are in b
 | test.data.zip | [BaiduYun](https://pan.baidu.com/s/1DTVGCG5k0jjjhOc8GcSLOw) or [Google Drive](https://drive.google.com/file/d/1r_ciJ1M0BSRTwndIBt42GlPFRv6CvvEP/view?usp=sharing), 151M | The cropped images of AFLW and ALFW-2000-3D testset |
 
 After preparing the training dataset and configuration files, go into `training` directory and run the bash scripts to train. 
-The training parameters are all presented in bash scripts.
+The training configutations are all presented in bash scripts.
 
 ## FQA
 1. Face bounding box initialization
 
-    The original paper validates that using detected bounding box instead of ground truth box will cause a little performance drop. Thus the current face cropping method is robustest. Quantitative results are shown in below table.
+    The original paper shows that using detected bounding box instead of ground truth box will cause a little performance drop. Thus the current face cropping method is robustest. Quantitative results are shown in below table.
 
 <p align="center">
   <img src="imgs/bouding_box_init.png" alt="bounding box" width="500px">
 </p>
 
+2. Face reconstruction
+   The texture of non-visible area is distorted due to self-occlusion, therefore the non-visible face region may appear strange (a little horrible).
+
 ## Acknowledgement
-
- - Authors of this project: [Jianzhu Guo](https://guojianzhu.com), [Xiangyu Zhu](http://www.cbsr.ia.ac.cn/users/xiangyuzhu/). This project is partially supervised by [Zhen Lei](http://www.cbsr.ia.ac.cn/users/zlei/).
  - Thanks for [Yao Feng](https://github.com/YadiraF)'s fantastic works [PRNet](https://github.com/YadiraF/PRNet) and [face3d](https://github.com/YadiraF/face3d).
+ - Thanks for the official PyTorch twitter account's [tweet](https://twitter.com/PyTorch/status/1066064914249367552).
 
-Thanks for your interest in this repo.
-If your work or research benefit from this repo, please cite it and star it 😃
 
-And welcome to focus on my another 3D face related work [MeGlass](https://github.com/cleardusk/MeGlass).
+Thanks for your interest in this repo. If your work or research benefit from this repo, please cite it, star it and popularize it 😃
+
+Welcome to focus on my another 3D face related work [MeGlass](https://github.com/cleardusk/MeGlass).
 
 ## Contact
 **Jianzhu Guo (郭建珠)** [[Homepage](https://guojianzhu.com/), [Google Scholar](https://scholar.google.com/citations?user=W8_JzNcAAAAJ&hl=en&oi=ao)]:  **jianzhu.guo@nlpr.ia.ac.cn**. 

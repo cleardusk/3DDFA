@@ -22,3 +22,8 @@ models/shape_predictor_68_face_landmarks.dat
 
 demo_obama/
 todo.md
+
+utils/cython/build
+utils/cython/*.so
+utils/cython/mesh_core_cython.cpp
+PAF/
