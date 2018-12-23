@@ -1,7 +1,7 @@
 # Face Alignment in Full Pose Range: A 3D Total Solution
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
-This project is authored by [Jianzhu Guo](https://guojianzhu.com), [Xiangyu Zhu](http://www.cbsr.ia.ac.cn/users/xiangyuzhu/) and partially supervised by [Zhen Lei](http://www.cbsr.ia.ac.cn/users/zlei/).
+This project is authored by [Jianzhu Guo](https://guojianzhu.com/2018/10/07/index.html), [Xiangyu Zhu](http://www.cbsr.ia.ac.cn/users/xiangyuzhu/) and partially supervised by [Zhen Lei](http://www.cbsr.ia.ac.cn/users/zlei/).
 
 <p align="center">
   <img src="samples/obama_three_styles.gif" alt="obama">
