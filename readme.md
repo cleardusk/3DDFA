@@ -24,6 +24,8 @@ This project is authored by [Jianzhu Guo](https://guojianzhu.com/2018/10/07/inde
 - [x] PNCC (Projected Normalized Coordinate Code).
 - [x] PAF (Pose Adaptive Feature).
 - [x] Obj serialization with sampled texture.
+- [ ] Update the face detector (not Dlib).
+- [ ] Training details.
 - [ ] Face swapping.
 - [ ] Face Profiling.
 
