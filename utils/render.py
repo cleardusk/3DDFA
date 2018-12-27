@@ -15,6 +15,7 @@ from glob import glob
 
 import numpy as np
 from .cython import mesh_core_cython
+from .params import pncc_code
 
 
 def is_point_in_tri(point, tri_points):
@@ -189,6 +190,21 @@ def ncc(vertices):
 
 
 def cpncc(img, vertices_lst, tri):
+    """cython version for PNCC render: original paper"""
+    h, w = img.shape[:2]
+    c = 3
+
+    pnccs_img = np.zeros((h, w, c))
+    for i in range(len(vertices_lst)):
+        vertices = vertices_lst[i]
+        pncc_img = crender_colors(vertices, tri, pncc_code, h, w, c)
+        pnccs_img[pncc_img > 0] = pncc_img[pncc_img > 0]
+
+    pnccs_img = pnccs_img.squeeze() * 255
+    return pnccs_img
+
+
+def cpncc_v2(img, vertices_lst, tri):
     """cython version for PNCC render"""
     h, w = img.shape[:2]
     c = 3
