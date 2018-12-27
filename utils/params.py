@@ -38,3 +38,6 @@ paf = _load(osp.join(d, 'Model_PAF.pkl'))
 u_filter = paf.get('mu_filter')
 w_filter = paf.get('w_filter')
 w_exp_filter = paf.get('w_exp_filter')
+
+# pncc code (mean shape)
+pncc_code = _load(osp.join(d, 'pncc_code.npy'))
