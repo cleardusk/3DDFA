@@ -228,7 +228,7 @@ The training configutations are all presented in bash scripts.
 
 Thanks for your interest in this repo. If your work or research benefit from this repo, please cite it, star it and popularize it 😃
 
-Welcome to focus on my another 3D face related work [MeGlass](https://github.com/cleardusk/MeGlass).
+Welcome to focus on my 3D face related works: [MeGlass](https://github.com/cleardusk/MeGlass) and [Face Anti-Spoofing](https://arxiv.org/abs/1901.00488).
 
 ## Contact
 **Jianzhu Guo (郭建珠)** [[Homepage](https://guojianzhu.com/), [Google Scholar](https://scholar.google.com/citations?user=W8_JzNcAAAAJ&hl=en&oi=ao)]:  **jianzhu.guo@nlpr.ia.ac.cn**. 
