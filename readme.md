@@ -1,7 +1,7 @@
 # Face Alignment in Full Pose Range: A 3D Total Solution
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
-This project is authored by [Jianzhu Guo](https://guojianzhu.com/2018/10/07/index.html), [Xiangyu Zhu](http://www.cbsr.ia.ac.cn/users/xiangyuzhu/) and partially supervised by [Zhen Lei](http://www.cbsr.ia.ac.cn/users/zlei/).
+This project is authored by [Jianzhu Guo](https://guojianzhu.com/aboutme.html), [Xiangyu Zhu](http://www.cbsr.ia.ac.cn/users/xiangyuzhu/) and partially supervised by [Zhen Lei](http://www.cbsr.ia.ac.cn/users/zlei/).
 
 <p align="center">
   <img src="samples/obama_three_styles.gif" alt="obama">
@@ -231,4 +231,4 @@ Thanks for your interest in this repo. If your work or research benefit from thi
 Welcome to focus on my 3D face related works: [MeGlass](https://github.com/cleardusk/MeGlass) and [Face Anti-Spoofing](https://arxiv.org/abs/1901.00488).
 
 ## Contact
-**Jianzhu Guo (郭建珠)** [[Homepage](https://guojianzhu.com/), [Google Scholar](https://scholar.google.com/citations?user=W8_JzNcAAAAJ&hl=en&oi=ao)]:  **jianzhu.guo@nlpr.ia.ac.cn**. 
+**Jianzhu Guo (郭建珠)** [[Homepage](https://guojianzhu.com), [Google Scholar](https://scholar.google.com/citations?user=W8_JzNcAAAAJ&hl=en&oi=ao)]:  **jianzhu.guo@nlpr.ia.ac.cn**. 
