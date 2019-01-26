@@ -32,7 +32,7 @@ STD_SIZE = 120
 
 def main(args):
     # 1. load pre-tained model
-    checkpoint_fp = 'models/phase1_wpdc_vdc_v2.pth.tar'
+    checkpoint_fp = 'models/phase1_wpdc_vdc.pth.tar'
     arch = 'mobilenet_1'
 
     checkpoint = torch.load(checkpoint_fp, map_location=lambda storage, loc: storage)['state_dict']

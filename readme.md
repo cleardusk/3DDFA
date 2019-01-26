@@ -182,7 +182,7 @@ First, you should download the cropped testset ALFW and ALFW-2000-3D in [test.da
 Next, run the benchmark code by providing trained model path.
 I have already provided five pre-trained models in `models` directory (seen in below table). These models are trained using different loss in the first stage. The model size is about 13M due to the high efficiency of MobileNet-V1 structure.
 ```
-python3 ./benchmark.py -c models/phase1_wpdc_vdc_v2.pth.tar
+python3 ./benchmark.py -c models/phase1_wpdc_vdc.pth.tar
 ```
 
 The performances of pre-trained models are shown below. In the first stage, the effectiveness of different loss is in order: WPDC > VDC > PDC. While the strategy using VDC to finetune WPDC achieves the best result.
