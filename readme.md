@@ -14,7 +14,6 @@ This project is authored by [Jianzhu Guo](https://guojianzhu.com/aboutme.html), 
  - `2018.12.1`: Refine code and add pose estimation feature, see [utils/estimate_pose.py](./utils/estimate_pose.py) for more details.
  - `2018.11.17`: Refine code and map the 3d vertex to original image space.
  - `2018.11.11`: **Update end-to-end inference pipeline: infer/serialize 3D face shape and 68 landmarks given one arbitrary image, please see readme.md below for more details.**
- - `2018.11.9`: Update trained model with higher performance in [models](./models).
  - `2018.10.4`: Add Matlab face mesh rendering demo in [visualize](./visualize).
  - `2018.9.9`: Add pre-process of face cropping in [benchmark](./benchmark).
 
@@ -193,8 +192,7 @@ The performances of pre-trained models are shown below. In the first stage, the 
 | *phase1_pdc.pth.tar*  | 6.956±0.981 | 5.644±1.323 | [Baidu Yun](https://pan.baidu.com/s/1xeyZa4rxVazd_QGWx6QXFw) or [Google Drive](https://drive.google.com/open?id=18UQfDkGNzotKoFV0Lh_O-HnXsp1ABdjl) |
 | *phase1_vdc.pth.tar*  | 6.717±0.924 | 5.030±1.044 | [Baidu Yun](https://pan.baidu.com/s/10-0YpYKj1_efJYqC1q-aNQ) or [Google Drive](https://drive.google.com/open?id=1iHADYNIQR2Jqvt4nwmnh5n3Axe-HXMRR) |
 | *phase1_wpdc.pth.tar* | 6.348±0.929 | 4.759±0.996 | [Baidu Yun](https://pan.baidu.com/s/1yqaJ3S3MNpYBgyA5BYtHuw) or [Google Drive](https://drive.google.com/open?id=1ebwkOWjaQ7U4mpA89ldfmjeQdfDDdFS-) |
-| *phase1_wpdc_vdc.pth.tar* | **5.401±0.754** | **4.252±0.976** | [Baidu Yun](https://pan.baidu.com/s/1Vxk5jeP8fd4l6HM3or-OcQ) or [Google Drive](https://drive.google.com/open?id=137QLVonYZkMxfaRqzDQWFvlm6BHPp5LZ) |
-| *phase1_wpdc_vdc_v2.pth.tar* \[newly add\] | **5.298±0.776** | **4.090±0.964** | Already existed in this repo. |
+| *phase1_wpdc_vdc.pth.tar* | **5.401±0.754** | **4.252±0.976** | In this repo. |
 
 ## Training
 The training scripts lie in `training` directory. The related resources are in below table.
