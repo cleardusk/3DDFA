@@ -9,6 +9,7 @@ This project is authored by [Jianzhu Guo](https://guojianzhu.com/aboutme.html), 
 
 **\[Updates\]**
 
+ - `2019.3.28`: Some updates.
  - `2018.12.23`: **Add several features: depth image estimation, PNCC, PAF feature and obj serialization.** See `dump_depth`, `dump_pncc`, `dump_paf`, `dump_obj` options for more details.
  - `2018.12.2`: Support landmark-free face cropping, see `dlib_landmark` option.
  - `2018.12.1`: Refine code and add pose estimation feature, see [utils/estimate_pose.py](./utils/estimate_pose.py) for more details.
@@ -23,15 +24,16 @@ This project is authored by [Jianzhu Guo](https://guojianzhu.com/aboutme.html), 
 - [x] PNCC (Projected Normalized Coordinate Code).
 - [x] PAF (Pose Adaptive Feature).
 - [x] Obj serialization with sampled texture.
-- [ ] Update the face detector (not Dlib).
-- [ ] Training details.
+- [x] Recommendation of fast face detectors: [FaceBoxes.PyTorch](https://github.com/zisianw/FaceBoxes.PyTorch), [libfacedetection](https://github.com/ShiqiYu/libfacedetection), [ZQCNN](https://github.com/zuoqing1988/ZQCNN)
+- [x] [Training details](#Training--details)
 - [ ] Face swapping.
-- [ ] Face Profiling.
+- [x] Face Profiling: [Official Matlab code](http://www.cbsr.ia.ac.cn/users/xiangyuzhu/projects/3DDFA/Code/FaceProfilingRelease_v1.1.zip)
 
 ## Introduction
-This repo holds the pytorch improved re-implementation of paper [Face Alignment in Full Pose Range: A 3D Total Solution](https://arxiv.org/abs/1804.01005). Several external works are added in this repo, including real-time training, training strategy and so on. Therefore, this repo is far more than re-implementation. One related blog will be published for some important technique details in future.
-As far, this repo releases the pre-trained first-stage pytorch models of MobileNet-V1 structure, the pre-processed training&testing dataset and codebase.
-It is worth to note that the inference time is about **0.27ms per image** (input batch with 128 images) on GeForce GTX TITAN X. Why not evaluate it on single image? Because most time for single image is spent on function call. The inference speed is equal to MobileNet-V1 with 120x120x3 tensor as input, therefore it is possible to convert to mobile devices.
+This repo holds the pytorch improved version of the paper: [Face Alignment in Full Pose Range: A 3D Total Solution](https://arxiv.org/abs/1804.01005). Several works beyond the original paper are added, including the real-time training, training strategies. Therefore, this repo is an improved version of the original work. As far, this repo releases the pre-trained first-stage pytorch models of MobileNet-V1 structure, the pre-processed training&testing dataset and codebase. Note that the inference time is about **0.27ms per image** (input batch with 128 images as an input batch) on GeForce GTX TITAN X.
+<!-- Note that if your academic work use the code of this repo, you should cite this repo not the original paper.-->
+<!-- One related blog will be published for some important technique details in future. -->
+<!-- Why not evaluate it on single image? Because most time for single image is spent on function call. The inference speed is equal to MobileNet-V1 with 120x120x3 tensor as input, therefore it is possible to convert to mobile devices. -->
 
 **This repo will keep updating in my spare time, and any meaningful issues and PR are welcomed.**
 
@@ -177,6 +179,51 @@ When input batch size is 128, the total inference time of MobileNet-V1 takes abo
   <img src="imgs/inference_speed.png" alt="Inference speed" width="600px">
 </p>
 
+## Training details
+The training scripts lie in `training` directory. The related resources are in below table.
+
+| Data | Download Link | Description |
+|:-:|:-:|:-:|
+| train.configs | [BaiduYun](https://pan.baidu.com/s/1ozZVs26-xE49sF7nystrKQ) or [Google Drive](https://drive.google.com/open?id=1dzwQNZNMppFVShLYoLEfU3EOj3tCeXOD), 217M | The directory contraining 3DMM params and filelists of training dataset |
+| train_aug_120x120.zip | [BaiduYun](https://pan.baidu.com/s/19QNGst2E1pRKL7Dtx_L1MA) or [Google Drive](https://drive.google.com/open?id=17LfvBZFAeXt0ACPnVckfdrLTMHUpIQqE), 2.15G | The cropped images of augmentation training dataset |
+| test.data.zip | [BaiduYun](https://pan.baidu.com/s/1DTVGCG5k0jjjhOc8GcSLOw) or [Google Drive](https://drive.google.com/file/d/1r_ciJ1M0BSRTwndIBt42GlPFRv6CvvEP/view?usp=sharing), 151M | The cropped images of AFLW and ALFW-2000-3D testset |
+
+After preparing the training dataset and configuration files, go into `training` directory and run the bash scripts to train. `train_wpdc.sh`, `train_vdc.sh` and `train_pdc.sh` are examples of training scripts. After configuring the training and testing sets, just run them for training. Take `train_wpdc.sh` for example as below:
+
+```
+#!/usr/bin/env bash
+
+LOG_ALIAS=$1
+LOG_DIR="logs"
+mkdir -p ${LOG_DIR}
+
+LOG_FILE="${LOG_DIR}/${LOG_ALIAS}_`date +'%Y-%m-%d_%H:%M.%S'`.log"
+#echo $LOG_FILE
+
+./train.py --arch="mobilenet_1" \
+    --start-epoch=1 \
+    --loss=wpdc \
+    --snapshot="snapshot/phase1_wpdc" \
+    --param-fp-train='../train.configs/param_all_norm.pkl' \
+    --param-fp-val='../train.configs/param_all_norm_val.pkl' \
+    --warmup=5 \
+    --opt-style=resample \
+    --resample-num=132 \
+    --batch-size=512 \
+    --base-lr=0.02 \
+    --epochs=50 \
+    --milestones=30,40 \
+    --print-freq=50 \
+    --devices-id=0,1 \
+    --workers=8 \
+    --filelists-train="../train.configs/train_aug_120x120.list.train" \
+    --filelists-val="../train.configs/train_aug_120x120.list.val" \
+    --root="/path/to//train_aug_120x120" \
+    --log-file="${LOG_FILE}"
+```
+
+The specific training parameters are all presented in bash scripts, including learning rate, mibi-batch size, epochs and so on.
+
 ## Evaluation
 First, you should download the cropped testset ALFW and ALFW-2000-3D in [test.data.zip](https://pan.baidu.com/s/1DTVGCG5k0jjjhOc8GcSLOw), then unzip it and put it in the root directory.
 Next, run the benchmark code by providing trained model path.
@@ -193,18 +240,6 @@ The performances of pre-trained models are shown below. In the first stage, the 
 | *phase1_vdc.pth.tar*  | 6.717±0.924 | 5.030±1.044 | [Baidu Yun](https://pan.baidu.com/s/10-0YpYKj1_efJYqC1q-aNQ) or [Google Drive](https://drive.google.com/open?id=1iHADYNIQR2Jqvt4nwmnh5n3Axe-HXMRR) |
 | *phase1_wpdc.pth.tar* | 6.348±0.929 | 4.759±0.996 | [Baidu Yun](https://pan.baidu.com/s/1yqaJ3S3MNpYBgyA5BYtHuw) or [Google Drive](https://drive.google.com/open?id=1ebwkOWjaQ7U4mpA89ldfmjeQdfDDdFS-) |
 | *phase1_wpdc_vdc.pth.tar* | **5.401±0.754** | **4.252±0.976** | In this repo. |
-
-## Training
-The training scripts lie in `training` directory. The related resources are in below table.
-
-| Data | Download Link | Description |
-|:-:|:-:|:-:|
-| train.configs | [BaiduYun](https://pan.baidu.com/s/1ozZVs26-xE49sF7nystrKQ) or [Google Drive](https://drive.google.com/open?id=1dzwQNZNMppFVShLYoLEfU3EOj3tCeXOD), 217M | The directory contraining 3DMM params and filelists of training dataset |
-| train_aug_120x120.zip | [BaiduYun](https://pan.baidu.com/s/19QNGst2E1pRKL7Dtx_L1MA) or [Google Drive](https://drive.google.com/open?id=17LfvBZFAeXt0ACPnVckfdrLTMHUpIQqE), 2.15G | The cropped images of augmentation training dataset |
-| test.data.zip | [BaiduYun](https://pan.baidu.com/s/1DTVGCG5k0jjjhOc8GcSLOw) or [Google Drive](https://drive.google.com/file/d/1r_ciJ1M0BSRTwndIBt42GlPFRv6CvvEP/view?usp=sharing), 151M | The cropped images of AFLW and ALFW-2000-3D testset |
-
-After preparing the training dataset and configuration files, go into `training` directory and run the bash scripts to train. 
-The training configutations are all presented in bash scripts.
 
 ## FQA
 1. Face bounding box initialization
