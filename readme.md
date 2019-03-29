@@ -26,7 +26,6 @@ This project is authored by [Jianzhu Guo](https://guojianzhu.com/aboutme.html), 
 - [x] Obj serialization with sampled texture.
 - [x] Recommendation of fast face detectors: [FaceBoxes.PyTorch](https://github.com/zisianw/FaceBoxes.PyTorch), [libfacedetection](https://github.com/ShiqiYu/libfacedetection), [ZQCNN](https://github.com/zuoqing1988/ZQCNN)
 - [x] [Training details](#Training-details)
-- [ ] Face swapping.
 - [x] Face Profiling: [Official Matlab code](http://www.cbsr.ia.ac.cn/users/xiangyuzhu/projects/3DDFA/Code/FaceProfilingRelease_v1.1.zip)
 
 ## Introduction
