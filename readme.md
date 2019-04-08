@@ -1,6 +1,9 @@
 # Face Alignment in Full Pose Range: A 3D Total Solution
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![HitCount](http://hits.dwyl.io/cleardusk/3DDFA.svg)](http://hits.dwyl.io/cleardusk/3DDFA)
+![stars](https://img.shields.io/github/stars/cleardusk/3DDFA.svg?style=flat)
+![GitHub issues](https://img.shields.io/github/issues/cleardusk/3DDFA.svg)
+![GitHub repo size](https://img.shields.io/github/repo-size/cleardusk/3DDFA.svg)
 
 This project is authored by [Jianzhu Guo](https://guojianzhu.com/aboutme.html), [Xiangyu Zhu](http://www.cbsr.ia.ac.cn/users/xiangyuzhu/) and partially supervised by [Zhen Lei](http://www.cbsr.ia.ac.cn/users/zlei/).
 
