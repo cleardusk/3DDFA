@@ -1,0 +1,4 @@
+obama/
+*.m~
+__pycache__/
+obama_res@dense/

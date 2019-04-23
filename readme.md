@@ -13,6 +13,7 @@ This project is authored by [Jianzhu Guo](https://guojianzhu.com/aboutme.html), 
 
 **\[Updates\]**
 
+ - `2019.4.24`: Providing the demo building of obama, see [demo@obama/readme.md](demo@obama/readme.md) for more details.
  - `2019.3.28`: Some updates.
  - `2018.12.23`: **Add several features: depth image estimation, PNCC, PAF feature and obj serialization.** See `dump_depth`, `dump_pncc`, `dump_paf`, `dump_obj` options for more details.
  - `2018.12.2`: Support landmark-free face cropping, see `dlib_landmark` option.
