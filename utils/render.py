@@ -131,13 +131,13 @@ def crender_colors(vertices, triangles, colors, h, w, c=3, BG=None):
         image = np.zeros((h, w, c), dtype=np.float32)
     else:
         assert BG.shape[0] == h and BG.shape[1] == w and BG.shape[2] == c
-        image = BG
+        image = BG.astype(np.float32).copy(order='C')
     depth_buffer = np.zeros([h, w], dtype=np.float32, order='C') - 999999.
 
     # to C order
-    vertices = vertices.T.astype(np.float32).copy(order='C')
-    triangles = triangles.T.astype(np.int32).copy(order='C')
-    colors = colors.T.astype(np.float32).copy(order='C')
+    vertices = vertices.astype(np.float32).copy(order='C')
+    triangles = triangles.astype(np.int32).copy(order='C')
+    colors = colors.astype(np.float32).copy(order='C')
 
     mesh_core_cython.render_colors_core(
         image, vertices, triangles,
