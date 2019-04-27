@@ -53,6 +53,7 @@ class point {
 bool is_point_in_tri(point p, point p0, point p1, point p2, int h, int w);
 void get_point_weight(float* weight, point p, point p0, point p1, point p2);
 void _get_normal_core(float* normal, float* tri_normal, int* triangles, int ntri);
+void _get_normal(float *ver_normal, float *vertices, int *triangles, int nver, int ntri);
 void _render_colors_core(
     float* image, float* vertices, int* triangles,
     float* colors,

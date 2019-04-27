@@ -91,6 +91,61 @@ void _get_normal_core(float* normal, float* tri_normal, int* triangles, int ntri
     }
 }
 
+void _get_normal(float *ver_normal, float *vertices, int *triangles, int nver, int ntri) {
+    int tri_p0_ind, tri_p1_ind, tri_p2_ind;
+    float v1x, v1y, v1z, v2x, v2y, v2z;
+
+    // get tri_normal
+    float tri_normal[3 * ntri];
+    for (int i = 0; i < ntri; i++) {
+        tri_p0_ind = triangles[3 * i];
+        tri_p1_ind = triangles[3 * i + 1];
+        tri_p2_ind = triangles[3 * i + 2];
+
+        // counter clockwise order
+        v1x = vertices[3 * tri_p1_ind] - vertices[3 * tri_p0_ind];
+        v1y = vertices[3 * tri_p1_ind + 1] - vertices[3 * tri_p0_ind + 1];
+        v1z = vertices[3 * tri_p1_ind + 2] - vertices[3 * tri_p0_ind + 2];
+
+        v2x = vertices[3 * tri_p2_ind] - vertices[3 * tri_p0_ind];
+        v2y = vertices[3 * tri_p2_ind + 1] - vertices[3 * tri_p0_ind + 1];
+        v2z = vertices[3 * tri_p2_ind + 2] - vertices[3 * tri_p0_ind + 2];
+
+
+        tri_normal[3 * i] = v1y * v2z - v1z * v2y;
+        tri_normal[3 * i + 1] = v1z * v2x - v1x * v2z;
+        tri_normal[3 * i + 2] = v1x * v2y - v1y * v2x;
+
+    }
+
+    // get ver_normal
+    for (int i = 0; i < ntri; i++) {
+        tri_p0_ind = triangles[3 * i];
+        tri_p1_ind = triangles[3 * i + 1];
+        tri_p2_ind = triangles[3 * i + 2];
+
+        for (int j = 0; j < 3; j++) {
+            ver_normal[3 * tri_p0_ind + j] += tri_normal[3 * i + j];
+            ver_normal[3 * tri_p1_ind + j] += tri_normal[3 * i + j];
+            ver_normal[3 * tri_p2_ind + j] += tri_normal[3 * i + j];
+        }
+    }
+
+    // normalizing
+    float nx, ny, nz, det;
+    for (int i = 0; i < nver; ++i) {
+        nx = ver_normal[3 * i];
+        ny = ver_normal[3 * i + 1];
+        nz = ver_normal[3 * i + 2];
+
+        det = sqrt(nx * nx + ny * ny + nz * nz);
+//        if (det <= 0) det = 1e-6;
+        ver_normal[3 * i] = nx / det;
+        ver_normal[3 * i + 1] = ny / det;
+        ver_normal[3 * i + 2] = nz / det;
+    }
+}
+
 void _render_colors_core(
     float* image, float* vertices, int* triangles,
     float* colors,
@@ -133,7 +188,7 @@ void _render_colors_core(
             for(x = x_min; x <= x_max; x++) //w
             {
                 p.x = x; p.y = y;
-                if(p.x < 2 || p.x > w - 3 || p.y < 2 || p.y > h - 3 || is_point_in_tri(p, p0, p1, p2))
+                if(is_point_in_tri(p, p0, p1, p2))
                 {
                     get_point_weight(weight, p, p0, p1, p2);
                     p_depth = weight[0]*p0_depth + weight[1]*p1_depth + weight[2]*p2_depth;

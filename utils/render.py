@@ -8,11 +8,6 @@ Modified from https://raw.githubusercontent.com/YadiraF/PRNet/master/utils/rende
 
 __author__ = 'cleardusk'
 
-import os
-import os.path as osp
-import sys
-from glob import glob
-
 import numpy as np
 from .cython import mesh_core_cython
 from .params import pncc_code
@@ -106,7 +101,7 @@ def get_depths_image(img, vertices_lst, tri):
         vertices[2, :] = (z - z_min) / (z_max - z_min)
 
         z = vertices[2:, :]
-        depth_img = render_colors(vertices, z, tri, h, w, 1)
+        depth_img = render_colors(vertices.T, z.T, tri.T, h, w, 1)
         depths_img[depth_img > 0] = depth_img[depth_img > 0]
 
     depths_img = depths_img.squeeze() * 255
@@ -163,7 +158,7 @@ def cget_depths_image(img, vertices_lst, tri):
         vertices[2, :] = (z - z_min) / (z_max - z_min)
         z = vertices[2:, :]
 
-        depth_img = crender_colors(vertices, tri, z, h, w, 1)
+        depth_img = crender_colors(vertices.T, tri.T, z.T, h, w, 1)
         depths_img[depth_img > 0] = depth_img[depth_img > 0]
 
     depths_img = depths_img.squeeze() * 255
@@ -197,7 +192,7 @@ def cpncc(img, vertices_lst, tri):
     pnccs_img = np.zeros((h, w, c))
     for i in range(len(vertices_lst)):
         vertices = vertices_lst[i]
-        pncc_img = crender_colors(vertices, tri, pncc_code, h, w, c)
+        pncc_img = crender_colors(vertices.T, tri.T, pncc_code.T, h, w, c)
         pnccs_img[pncc_img > 0] = pncc_img[pncc_img > 0]
 
     pnccs_img = pnccs_img.squeeze() * 255
@@ -213,7 +208,7 @@ def cpncc_v2(img, vertices_lst, tri):
     for i in range(len(vertices_lst)):
         vertices = vertices_lst[i]
         ncc_vertices = ncc(vertices)
-        pncc_img = crender_colors(vertices, tri, ncc_vertices, h, w, c)
+        pncc_img = crender_colors(vertices.T, tri.T, ncc_vertices.T, h, w, c)
         pnccs_img[pncc_img > 0] = pncc_img[pncc_img > 0]
 
     pnccs_img = pnccs_img.squeeze() * 255

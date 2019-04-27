@@ -2,3 +2,5 @@ obama/
 *.m~
 __pycache__/
 obama_res@dense/
+obama_res@dense_py/
+obama_res@dense_py_v2/
