@@ -5,7 +5,7 @@
 ![GitHub issues](https://img.shields.io/github/issues/cleardusk/3DDFA.svg)
 ![GitHub repo size](https://img.shields.io/github/repo-size/cleardusk/3DDFA.svg)
 
-This project is authored by [Jianzhu Guo](https://guojianzhu.com/aboutme.html), [Xiangyu Zhu](http://www.cbsr.ia.ac.cn/users/xiangyuzhu/) and partially supervised by [Zhen Lei](http://www.cbsr.ia.ac.cn/users/zlei/).
+By [Jianzhu Guo](https://guojianzhu.com/aboutme.html).
 
 <p align="center">
   <img src="samples/obama_three_styles.gif" alt="obama">
@@ -261,7 +261,8 @@ The performances of pre-trained models are shown below. In the first stage, the 
 
 ## Acknowledgement
  - Thanks for [Yao Feng](https://github.com/YadiraF)'s fantastic works [PRNet](https://github.com/YadiraF/PRNet) and [face3d](https://github.com/YadiraF/face3d).
- - Thanks for the official PyTorch twitter account's [tweet](https://twitter.com/PyTorch/status/1066064914249367552).
+ - Thanks for this [tweet](https://twitter.com/PyTorch/status/1066064914249367552) of PyTorch.
+ - This project is partially supervised by [Xiangyu Zhu](http://www.cbsr.ia.ac.cn/users/xiangyuzhu/) and [Zhen Lei](http://www.cbsr.ia.ac.cn/users/zlei/).
 
 
 Thanks for your interest in this repo. If your work or research benefit from this repo, please cite it, star it and popularize it 😃
