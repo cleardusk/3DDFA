@@ -13,6 +13,7 @@ By [Jianzhu Guo](https://guojianzhu.com/aboutme.html).
 
 **\[Updates\]**
 
+ - `2019.5.2`: Evaluating inference speed on CPU with PyTorch v1.1.0, see [here](#./CPU) and [speed_cpu.py](./speed_cpu.py).
  - `2019.4.27`: A simple render pipline running at ~25ms/frame (720p), see [rendering.py](demo@obama/rendering.py) for more details.
  - `2019.4.24`: Providing the demo building of obama, see [demo@obama/readme.md](demo@obama/readme.md) for more details.
  - `2019.3.28`: Some updates.
@@ -79,7 +80,7 @@ Several results on ALFW-2000 dataset (inferenced from model *phase1_wpdc_vdc.pth
 
 ## Getting started
 ### Requirements
- - PyTorch >= 0.4.1 (PyTorch v1.1.0 is tested successfully on macOS and Linux.)
+ - PyTorch >= 0.4.1 (**PyTorch v1.1.0** is tested successfully on macOS and Linux.)
  - Python >= 3.6 (Numpy, Scipy, Matplotlib)
  - Dlib (Dlib is optionally for face and landmarks detection. There is no need to use Dlib if you can provide face bouding bbox and landmarks. Besides, you can try the two-step inference strategy without initialized landmarks.)
  - OpenCV (Python version, for image IO opertations.)
@@ -178,6 +179,21 @@ In addition, I strongly recommend using Python3.6+ instead of older version for 
 
     
 ## Inference speed
+### CPU
+Just run
+```
+python3 speed_cpu.py
+```
+
+On my MBP (i5-8259U CPU @ 2.30GHz on 13-inch MacBook Pro), based on **PyTorch v1.1.0**, with a single input, the running output is:
+```
+Inference speed: 14.50±0.11 ms
+```
+
+<!-- [speed_cpu.py](./speed_cpu.py) -->
+
+
+### GPU
 When input batch size is 128, the total inference time of MobileNet-V1 takes about 34.7ms. The average speed is about **0.27ms/pic**.
 
 <p align="center">

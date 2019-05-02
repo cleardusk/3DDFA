@@ -1,7 +1,7 @@
-torch==0.4.1
-torchvision==0.2.1
-numpy==1.15.4
-scipy==1.1.0
+torch>=0.4.1
+torchvision>=0.2.1
+numpy>=1.15.4
+scipy>=1.1.0
 matplotlib==3.0.2
 dlib==19.5.0 # 19.15+ version may cause conflict with pytorch, this may take several minutes
-opencv-python==3.4.3.18
+opencv-python>=3.4.3.18
