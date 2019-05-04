@@ -168,7 +168,7 @@ def validate(val_loader, model, criterion, epoch):
             output = model(input)
 
             loss = criterion(output, target)
-            losses.append(loss)
+            losses.append(loss.item())
 
         elapse = time.time() - end
         loss = np.mean(losses)
