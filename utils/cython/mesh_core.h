@@ -12,6 +12,7 @@ Modified by cleardusk (https://github.com/cleardusk)
 #include <string>
 #include <iostream>
 #include <fstream>
+#include <vector>
 
 using namespace std;
 
