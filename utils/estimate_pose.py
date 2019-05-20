@@ -33,7 +33,7 @@ def matrix2angle(R):
     '''
     # assert(isRotationMatrix(R))
 
-    if R[2, 0] != 1 or R[2, 0] != -1:
+    if R[2, 0] != 1 and R[2, 0] != -1:
         x = asin(R[2, 0])
         y = atan2(R[2, 1] / cos(x), R[2, 2] / cos(x))
         z = atan2(R[1, 0] / cos(x), R[0, 0] / cos(x))
