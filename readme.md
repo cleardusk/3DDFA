@@ -13,7 +13,8 @@ By [Jianzhu Guo](https://guojianzhu.com/aboutme.html).
 
 **\[Updates\]**
 
-  - `2019.6.17`: Adding a [video demo](./video_demo.py) contributed by [zjjMaiMai](https://github.com/zjjMaiMai).
+ - `2019.9.15`: Some updates, see the commit for details.
+ - `2019.6.17`: Adding a [video demo](./video_demo.py) contributed by [zjjMaiMai](https://github.com/zjjMaiMai).
  - `2019.5.2`: Evaluating inference speed on CPU with PyTorch v1.1.0, see [here](#CPU) and [speed_cpu.py](./speed_cpu.py).
  - `2019.4.27`: A simple render pipline running at ~25ms/frame (720p), see [rendering.py](demo@obama/rendering.py) for more details.
  - `2019.4.24`: Providing the demo building of obama, see [demo@obama/readme.md](demo@obama/readme.md) for more details.
