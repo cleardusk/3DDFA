@@ -27,3 +27,5 @@ utils/cython/build
 utils/cython/*.so
 utils/cython/mesh_core_cython.cpp
 PAF/
+
+samples/*.obj

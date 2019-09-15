@@ -1,14 +1,25 @@
 #!/usr/bin/env python3
 # coding: utf-8
 
+"""
+Notation (2019.09.15): two versions of spliting AFLW2000-3D:
+ 1) AFLW2000-3D.pose.npy: according to the fitted pose
+ 2) AFLW2000-3D-new.pose: according to AFLW labels 
+There is no obvious difference between these two splits.
+"""
+
 import os.path as osp
 import numpy as np
 from math import sqrt
 from utils.io import _load
 
 d = 'test.configs'
+
+# [1312, 383, 305], current version
 yaws_list = _load(osp.join(d, 'AFLW2000-3D.pose.npy'))
-# pts21 = _load(osp.join(d, 'AFLW2000-3D.pts21.npy'))
+
+# [1306, 462, 232], same as paper
+# yaws_list = _load(osp.join(d, 'AFLW2000-3D-new.pose.npy'))
 
 # origin
 pts68_all_ori = _load(osp.join(d, 'AFLW2000-3D.pts68.npy'))

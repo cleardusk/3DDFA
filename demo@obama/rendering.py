@@ -1,17 +1,17 @@
 #!/usr/bin/env python3
 # coding: utf-8
 
-import os
-import os.path as osp
-from glob import glob
 import sys
 
 sys.path.append('../')
+import os
+import os.path as osp
+from glob import glob
+
 from utils.lighting import RenderPipeline
 import numpy as np
 import scipy.io as sio
 import imageio
-import time
 
 cfg = {
     'intensity_ambient': 0.3,
@@ -31,7 +31,7 @@ def _to_ctype(arr):
     return arr
 
 
-def main():
+def obama_demo():
     wd = 'obama_res@dense_py'
     if not osp.exists(wd):
         os.mkdir(wd)
@@ -55,4 +55,4 @@ def main():
 
 
 if __name__ == '__main__':
-    main()
+    obama_demo()
