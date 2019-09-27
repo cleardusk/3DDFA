@@ -29,3 +29,4 @@ utils/cython/mesh_core_cython.cpp
 PAF/
 
 samples/*.obj
+.vscode/
