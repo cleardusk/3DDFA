@@ -278,6 +278,7 @@ The performances of pre-trained models are shown below. In the first stage, the 
    The texture of non-visible area is distorted due to self-occlusion, therefore the non-visible face region may appear strange (a little horrible).
 
 3. About shape and expression parameters clipping
+   
     The parameters clipping accelerates the training and reconstruction, but degrades the accuracy especially the details like closing eyes. Below is an image, with parameters dimension 40+10, 60+29 and 199+29 (the original one). Compared to shape, expression clipping has more effect on reconstruction accuracy when emotion is involved. Therefore, you can choose a tradeoff between the speed/parameter-size and the accuracy. A recommendation of clipping trade-off is 60+29.
 
 <p align="center">
