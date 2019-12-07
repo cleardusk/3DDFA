@@ -277,6 +277,13 @@ The performances of pre-trained models are shown below. In the first stage, the 
    
    The texture of non-visible area is distorted due to self-occlusion, therefore the non-visible face region may appear strange (a little horrible).
 
+3. About shape and expression parameters clipping
+    The parameters clipping accelerates the training and reconstruction, but degrades the accuracy especially the details like closing eyes. Below is an image, with parameters dimension 40+10, 60+29 and 199+29 (the original one). Compared to shape, expression clipping has more effect on reconstruction accuracy when emotion is involved. Therefore, you can choose a tradeoff between the speed/parameter-size and the accuracy. A recommendation of clipping trade-off is 60+29.
+
+<p align="center">
+  <img src="imgs/params_clip.jpg" alt="bounding box" width="600px">
+</p>
+
 ## Acknowledgement
  - Thanks for [Yao Feng](https://github.com/YadiraF)'s fantastic works [PRNet](https://github.com/YadiraF/PRNet) and [face3d](https://github.com/YadiraF/face3d).
  - Thanks for this [tweet](https://twitter.com/PyTorch/status/1066064914249367552) of PyTorch.
@@ -288,4 +295,4 @@ Thanks for your interest in this repo. If your work or research benefit from thi
 Welcome to focus on my 3D face related works: [MeGlass](https://github.com/cleardusk/MeGlass) and [Face Anti-Spoofing](https://arxiv.org/abs/1901.00488).
 
 ## Contact
-**Jianzhu Guo (郭建珠)** [[Homepage](https://guojianzhu.com), [Google Scholar](https://scholar.google.com/citations?user=W8_JzNcAAAAJ&hl=en&oi=ao)]:  **jianzhu.guo@nlpr.ia.ac.cn**. 
+**Jianzhu Guo (郭建珠)** [[Homepage-Academic]((http://pub.guojianzhu.com)), [Homepage-Blog](https://guojianzhu.com), [Google Scholar](https://scholar.google.com/citations?user=W8_JzNcAAAAJ&hl=en&oi=ao)]:  **jianzhu.guo@nlpr.ia.ac.cn**. 
