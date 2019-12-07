@@ -264,6 +264,9 @@ The performances of pre-trained models are shown below. In the first stage, the 
 | *phase1_wpdc.pth.tar* | 6.348±0.929 | 4.759±0.996 | [Baidu Yun](https://pan.baidu.com/s/1yqaJ3S3MNpYBgyA5BYtHuw) or [Google Drive](https://drive.google.com/open?id=1ebwkOWjaQ7U4mpA89ldfmjeQdfDDdFS-) |
 | *phase1_wpdc_vdc.pth.tar* | **5.401±0.754** | **4.252±0.976** | In this repo. |
 
+### About the performance
+Believe me that the framework of this repo can achieve better performance than [PRNet](https://github.com/YadiraF/PRNet) without increasing any computation budget. Related work is under review and code will be released upon acceptance.
+
 ## FQA
 1. Face bounding box initialization
 
@@ -296,4 +299,4 @@ Thanks for your interest in this repo. If your work or research benefit from thi
 Welcome to focus on my 3D face related works: [MeGlass](https://github.com/cleardusk/MeGlass) and [Face Anti-Spoofing](https://arxiv.org/abs/1901.00488).
 
 ## Contact
-**Jianzhu Guo (郭建珠)** [[Homepage-Academic]((http://pub.guojianzhu.com)), [Homepage-Blog](https://guojianzhu.com), [Google Scholar](https://scholar.google.com/citations?user=W8_JzNcAAAAJ&hl=en&oi=ao)]:  **jianzhu.guo@nlpr.ia.ac.cn**. 
+**Jianzhu Guo (郭建珠)** [[Homepage-Academic](http://pub.guojianzhu.com), [Homepage-Blog](https://guojianzhu.com), [Google Scholar](https://scholar.google.com/citations?user=W8_JzNcAAAAJ&hl=en&oi=ao)]:  **jianzhu.guo@nlpr.ia.ac.cn**. 
