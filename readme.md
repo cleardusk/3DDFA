@@ -299,4 +299,4 @@ Thanks for your interest in this repo. If your work or research benefit from thi
 Welcome to focus on my 3D face related works: [MeGlass](https://github.com/cleardusk/MeGlass) and [Face Anti-Spoofing](https://arxiv.org/abs/1901.00488).
 
 ## Contact
-**Jianzhu Guo (郭建珠)** [[Homepage-Academic](http://pub.guojianzhu.com), [Homepage-Blog](https://guojianzhu.com), [Google Scholar](https://scholar.google.com/citations?user=W8_JzNcAAAAJ&hl=en&oi=ao)]:  **jianzhu.guo@nlpr.ia.ac.cn**. 
+**Jianzhu Guo (郭建珠)** [[Homepage-Academic](http://me.guojianzhu.com), [Homepage-Blog](https://guojianzhu.com), [Google Scholar](https://scholar.google.com/citations?user=W8_JzNcAAAAJ&hl=en&oi=ao)]:  **jianzhu.guo@nlpr.ia.ac.cn**. 
