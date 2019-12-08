@@ -5,7 +5,9 @@
 ![GitHub issues](https://img.shields.io/github/issues/cleardusk/3DDFA.svg)
 ![GitHub repo size](https://img.shields.io/github/repo-size/cleardusk/3DDFA.svg)
 
-By [Jianzhu Guo](https://guojianzhu.com/aboutme.html).
+<!-- By [Jianzhu Guo](https://guojianzhu.com/aboutme.html). -->
+By [Jianzhu Guo](http://me.guojianzhu.com).
+
 
 <p align="center">
   <img src="samples/obama_three_styles.gif" alt="obama">
