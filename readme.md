@@ -293,10 +293,10 @@ Believe me that the framework of this repo can achieve better performance than [
 ## Acknowledgement
  - Thanks for [Yao Feng](https://github.com/YadiraF)'s fantastic works [PRNet](https://github.com/YadiraF/PRNet) and [face3d](https://github.com/YadiraF/face3d).
  - Thanks for this [tweet](https://twitter.com/PyTorch/status/1066064914249367552) of PyTorch.
- - This project is partially supervised by [Xiangyu Zhu](http://www.cbsr.ia.ac.cn/users/xiangyuzhu/) and [Zhen Lei](http://www.cbsr.ia.ac.cn/users/zlei/).
+ <!-- - This project is partially supervised by [Xiangyu Zhu](http://www.cbsr.ia.ac.cn/users/xiangyuzhu/) and [Zhen Lei](http://www.cbsr.ia.ac.cn/users/zlei/). -->
 
 
-Thanks for your interest in this repo. If your work or research benefit from this repo, please cite it, star it and popularize it 😃
+Thanks for your interest in this repo. If your work or research benefits from this repo, please cite, star and popularize it 😃
 
 Welcome to focus on my 3D face related works: [MeGlass](https://github.com/cleardusk/MeGlass) and [Face Anti-Spoofing](https://arxiv.org/abs/1901.00488).
 
