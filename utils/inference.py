@@ -212,7 +212,7 @@ def write_obj_with_colors(obj_name, vertices, triangles, colors):
     with open(obj_name, 'w') as f:
         # write vertices & colors
         for i in range(vertices.shape[1]):
-            s = 'v {:.4f} {:.4f} {:.4f} {} {} {}\n'.format(vertices[1, i], vertices[0, i], vertices[2, i], colors[i, 2],
+            s = 'v {:.4f} {:.4f} {:.4f} {} {} {}\n'.format(vertices[0, i], vertices[1, i], vertices[2, i], colors[i, 2],
                                                colors[i, 1], colors[i, 0])
             f.write(s)
 
