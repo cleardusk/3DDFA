@@ -14,7 +14,7 @@ By [Jianzhu Guo](http://me.guojianzhu.com).
 </p>
 
 **\[Updates\]**
-
+ - `2020.3.24`: The extended work is submitted and under review. Code will be released upon acceptance.
  - `2019.9.15`: Some updates, see the commits for details.
  - `2019.6.17`: Adding a [video demo](./video_demo.py) contributed by [zjjMaiMai](https://github.com/zjjMaiMai).
  - `2019.5.2`: Evaluating inference speed on CPU with PyTorch v1.1.0, see [here](#CPU) and [speed_cpu.py](./speed_cpu.py).
@@ -95,7 +95,7 @@ Several results on ALFW-2000 dataset (inferenced from model *phase1_wpdc_vdc.pth
  # installation structions
  sudo pip3 install torch torchvision # for cpu version. more option to see https://pytorch.org
  sudo pip3 install numpy scipy matplotlib
- sudo pip3 install dlib==19.5.0 # 19.15+ version may cause conflict with pytorch in Linux, this may take several minutes
+ sudo pip3 install dlib==19.5.0 # 19.15+ version may cause conflict with pytorch in Linux, this may take several minutes. If 19.5 version raises errors, you may try 19.15+ version.
  sudo pip3 install opencv-python
  sudo pip3 install cython
  ```
@@ -166,22 +166,23 @@ In addition, I strongly recommend using Python3.6+ instead of older version for 
 </p>
 
 ## Citation
-    @article{zhu2017face,
-      title={Face Alignment in Full Pose Range: A 3D Total Solution},
-      author={Zhu, Xiangyu and Lei, Zhen and Li, Stan Z and others},
-      journal={IEEE Transactions on Pattern Analysis and Machine Intelligence},
-      year={2017},
-      publisher={IEEE}
-    }
+**If your work benefits from this repo, please cite two bibs below.**
 
     @misc{3ddfa_cleardusk,
-      author =       {Jianzhu Guo, Xiangyu Zhu and Zhen Lei},
+      author =       {Guo, Jianzhu and Zhu, Xiangyu and Lei, Zhen},
       title =        {3DDFA},
       howpublished = {\url{https://github.com/cleardusk/3DDFA}},
       year =         {2018}
     }
 
-    
+    @article{zhu2017face,
+      title=      {Face alignment in full pose range: A 3d total solution},
+      author=     {Zhu, Xiangyu and Liu, Xiaoming and Lei, Zhen and Li, Stan Z},
+      journal=    {IEEE transactions on pattern analysis and machine intelligence},
+      year=       {2017},
+      publisher=  {IEEE}
+    }
+
 ## Inference speed
 ### CPU
 Just run
