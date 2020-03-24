@@ -165,23 +165,6 @@ In addition, I strongly recommend using Python3.6+ instead of older version for 
   <img src="samples/emma_input_pose.jpg" alt="samples" width="750px">
 </p>
 
-## Citation
-**If your work benefits from this repo, please cite two bibs below.**
-
-    @misc{3ddfa_cleardusk,
-      author =       {Guo, Jianzhu and Zhu, Xiangyu and Lei, Zhen},
-      title =        {3DDFA},
-      howpublished = {\url{https://github.com/cleardusk/3DDFA}},
-      year =         {2018}
-    }
-
-    @article{zhu2017face,
-      title=      {Face alignment in full pose range: A 3d total solution},
-      author=     {Zhu, Xiangyu and Liu, Xiaoming and Lei, Zhen and Li, Stan Z},
-      journal=    {IEEE transactions on pattern analysis and machine intelligence},
-      year=       {2017},
-      publisher=  {IEEE}
-    }
 
 ## Inference speed
 ### CPU
@@ -299,6 +282,25 @@ Believe me that the framework of this repo can achieve better performance than [
 Thanks for your interest in this repo. If your work or research benefits from this repo, star it 😃
 
 Welcome to focus on my 3D face related works: [MeGlass](https://github.com/cleardusk/MeGlass) and [Face Anti-Spoofing](https://arxiv.org/abs/1901.00488).
+
+## Citation
+**If your work benefits from this repo, please cite two bibs below.**
+
+    @misc{3ddfa_cleardusk,
+      author =       {Guo, Jianzhu and Zhu, Xiangyu and Lei, Zhen},
+      title =        {3DDFA},
+      howpublished = {\url{https://github.com/cleardusk/3DDFA}},
+      year =         {2018}
+    }
+
+    @article{zhu2017face,
+      title=      {Face alignment in full pose range: A 3d total solution},
+      author=     {Zhu, Xiangyu and Liu, Xiaoming and Lei, Zhen and Li, Stan Z},
+      journal=    {IEEE transactions on pattern analysis and machine intelligence},
+      year=       {2017},
+      publisher=  {IEEE}
+    }
+
 
 ## Contact
 **Jianzhu Guo (郭建珠)** [[Homepage-Academic](http://me.guojianzhu.com), [Homepage-Blog](https://guojianzhu.com), [Google Scholar](https://scholar.google.com/citations?user=W8_JzNcAAAAJ&hl=en&oi=ao)]:  **jianzhu.guo@nlpr.ia.ac.cn**. 
