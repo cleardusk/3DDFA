@@ -6,7 +6,7 @@
 ![GitHub repo size](https://img.shields.io/github/repo-size/cleardusk/3DDFA.svg)
 
 <!-- By [Jianzhu Guo](https://guojianzhu.com/aboutme.html). -->
-By [Jianzhu Guo](http://me.guojianzhu.com).
+By [Jianzhu Guo](http://guojianzhu.com).
 
 
 <p align="center">
@@ -303,4 +303,4 @@ Welcome to focus on my 3D face related works: [MeGlass](https://github.com/clear
 
 
 ## Contact
-**Jianzhu Guo (郭建珠)** [[Homepage-Academic](http://me.guojianzhu.com), [Homepage-Blog](https://guojianzhu.com), [Google Scholar](https://scholar.google.com/citations?user=W8_JzNcAAAAJ&hl=en&oi=ao)]:  **jianzhu.guo@nlpr.ia.ac.cn**. 
+**Jianzhu Guo (郭建珠)** [[Homepage-Academic](http://guojianzhu.com), [Homepage-Blog](http://vlog.guojianzhu.com), [Google Scholar](https://scholar.google.com/citations?user=W8_JzNcAAAAJ&hl=en&oi=ao)]:  **jianzhu.guo@nlpr.ia.ac.cn**. 
