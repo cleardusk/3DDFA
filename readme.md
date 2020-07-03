@@ -14,7 +14,7 @@ By [Jianzhu Guo](http://guojianzhu.com).
 </p>
 
 **\[Updates\]**
- - `2020.3.24`: The extended work is submitted and under review. Code will be released upon acceptance.
+ - `2020.7.3`: The extended work is accepted by <strong>[ECCV 2020](https://eccv2020.eu/)</strong>. Paper and models are on the road.
  - `2019.9.15`: Some updates, see the commits for details.
  - `2019.6.17`: Adding a [video demo](./video_demo.py) contributed by [zjjMaiMai](https://github.com/zjjMaiMai).
  - `2019.5.2`: Evaluating inference speed on CPU with PyTorch v1.1.0, see [here](#CPU) and [speed_cpu.py](./speed_cpu.py).
