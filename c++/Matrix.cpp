@@ -15,7 +15,6 @@ namespace matrix {
 				this->mat[i][j] = A.mat[i][j];
 			}
 		}
-
 	}
 	void Matrix::readFromFile(std::string fileName, int n, int m) {
 		 freopen(fileName.c_str(), "r", stdin);
