@@ -39,22 +39,17 @@ namespace YOLO{
 					classIdPoint.x = 0;
 					classIdPoint.y = 0;
 					minMaxLoc(scores, 0, &confidence, 0, &classIdPoint);
-					if (confidence > 0.2) {
-						
+					if (confidence > 0.2) {						
 						int centerX = (int)(data[0] * w );
 						int centerY = (int)(data[1] * h);
 						int width = (int)(data[2] * w * 1.4);
 						int height = (int)(data[3] * h * 1.4);
-
 						cv::Rect roi;
 						roi.x = centerX - width / 2;
 						roi.y = centerY - height / 2;
 						roi.width = width;
 						roi.height = height;
-						faces.push_back(roi);
-						
-
-						
+						faces.push_back(roi);						
 					}
 				}
 			}
