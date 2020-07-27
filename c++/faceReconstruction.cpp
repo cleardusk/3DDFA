@@ -35,7 +35,6 @@ namespace facereconstruction {
 		int pcnt = 0,
 			offsetcnt = 0;
 		for (int i = 0; i < out[0].cols; i++) {
-
 			float xx = (out[0].at<float>(i));
 			xx = xx * param_std.mat[i][0] + param_mean.mat[i][0];
 			if (i < 12 && (i % 4) != 3) {
