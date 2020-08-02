@@ -7,7 +7,7 @@ int main() {
     std::string model_fp = "weights/mb_1.onnx";
     std::string modelWeights = "weights/tiny-yolo-azface-fddb_82000.weights";
     std::string modelConf = "weights/tiny-yolo-azface-fddb.cfg";
-    string img_fp = "../samples/test1.jpg";
+    std::string img_fp = "../samples/test1.jpg";
 //    string img_fp = "test2.jpg";
 
     yolo::faceDetection detector(modelWeights, modelConf);
