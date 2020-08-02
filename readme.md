@@ -14,7 +14,8 @@ By [Jianzhu Guo](http://guojianzhu.com).
 </p>
 
 **\[Updates\]**
- - `2020.7.3`: The extended work is accepted by <strong>[ECCV 2020](https://eccv2020.eu/)</strong>. Paper and models are on the road.
+ - `2020.8.2`: Update a simple c++ port of this project, see [here](./c++/readme.md). The implementation relies on the new OpenCV (4.2.0+) framework to read onnx and do the inference.  
+ - `2020.7.3`: The extended work [Towards Fast, Accurate and Stable 3D Dense Face Alignment](https://guojianzhu.com/assets/pdfs/3162.pdf) is accepted by <strong>[ECCV 2020](https://eccv2020.eu/)</strong>.
  - `2019.9.15`: Some updates, see the commits for details.
  - `2019.6.17`: Adding a [video demo](./video_demo.py) contributed by [zjjMaiMai](https://github.com/zjjMaiMai).
  - `2019.5.2`: Evaluating inference speed on CPU with PyTorch v1.1.0, see [here](#CPU) and [speed_cpu.py](./speed_cpu.py).
@@ -284,13 +285,20 @@ Thanks for your interest in this repo. If your work or research benefits from th
 Welcome to focus on my 3D face related works: [MeGlass](https://github.com/cleardusk/MeGlass) and [Face Anti-Spoofing](https://arxiv.org/abs/1901.00488).
 
 ## Citation
-**If your work benefits from this repo, please cite two bibs below.**
+**If your work benefits from this repo, please cite three bibs below.**
 
     @misc{3ddfa_cleardusk,
       author =       {Guo, Jianzhu and Zhu, Xiangyu and Lei, Zhen},
       title =        {3DDFA},
       howpublished = {\url{https://github.com/cleardusk/3DDFA}},
       year =         {2018}
+    }
+    
+    @inproceedings{guo2020towards,
+      title=        {Towards Fast, Accurate and Stable 3D Dense Face Alignment},
+      author=       {Guo, Jianzhu and Zhu, Xiangyu and Yang, Yang and Yang, Fan and Lei, Zhen and Li, Stan Z},
+      booktitle=    {Proceedings of the European Conference on Computer Vision (ECCV)},
+      year=         {2020}
     }
 
     @article{zhu2017face,
