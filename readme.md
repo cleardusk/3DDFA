@@ -14,6 +14,7 @@ By [Jianzhu Guo](http://guojianzhu.com).
 </p>
 
 **\[Updates\]**
+ - `2020.8.30`: The pre-trained model and code of ECCV-20 are made public on [3DDFA_V2](https://github.com/cleardusk/3DDFA_V2), the copyright is explained by Jianzhu Guo and the CBSR group.
  - `2020.8.2`: Update a <strong>[simple c++ port](./c++/readme.md)</strong> of this project.
  - `2020.7.3`: The extended work <strong>[Towards Fast, Accurate and Stable 3D Dense Face Alignment](https://guojianzhu.com/assets/pdfs/3162.pdf)</strong> is accepted by [ECCV 2020](https://eccv2020.eu/). See [my page](https://guojianzhu.com) for more details.
  - `2019.9.15`: Some updates, see the commits for details.
