@@ -90,7 +90,7 @@ Several results on ALFW-2000 dataset (inferenced from model *phase1_wpdc_vdc.pth
  - PyTorch >= 0.4.1 (**PyTorch v1.1.0** is tested successfully on macOS and Linux.)
  - Python >= 3.6 (Numpy, Scipy, Matplotlib)
  - Dlib (Dlib is optionally for face and landmarks detection. There is no need to use Dlib if you can provide face bouding bbox and landmarks. Besides, you can try the two-step inference strategy without initialized landmarks.)
- - OpenCV (Python version, for image IO opertations.)
+ - OpenCV (Python version, for image IO operations.)
  - Cython (For accelerating depth and PNCC render.)
  - Platform: Linux or macOS (Windows is not tested.)
 
