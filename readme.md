@@ -234,7 +234,7 @@ LOG_FILE="${LOG_DIR}/${LOG_ALIAS}_`date +'%Y-%m-%d_%H:%M.%S'`.log"
     --log-file="${LOG_FILE}"
 ```
 
-The specific training parameters are all presented in bash scripts, including learning rate, mibi-batch size, epochs and so on.
+The specific training parameters are all presented in bash scripts, including learning rate, mini-batch size, epochs and so on.
 
 ## Evaluation
 First, you should download the cropped testset ALFW and ALFW-2000-3D in [test.data.zip](https://pan.baidu.com/s/1DTVGCG5k0jjjhOc8GcSLOw), then unzip it and put it in the root directory.
