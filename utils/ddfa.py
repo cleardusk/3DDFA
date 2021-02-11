@@ -43,17 +43,14 @@ def reconstruct_vertex(param, whitening=True, dense=False, transform=True):
 
     if dense:
         vertex = p @ (u + w_shp @ alpha_shp + w_exp @ alpha_exp).reshape(3, -1, order='F') + offset
-
-        if transform:
-            # transform to image coordinate space
-            vertex[1, :] = std_size + 1 - vertex[1, :]
     else:
         """For 68 pts"""
         vertex = p @ (u_base + w_shp_base @ alpha_shp + w_exp_base @ alpha_exp).reshape(3, -1, order='F') + offset
 
-        if transform:
-            # transform to image coordinate space
-            vertex[1, :] = std_size + 1 - vertex[1, :]
+    if transform:
+        # transform to image coordinate space (z pointing away from camera)
+        vertex[1, :] = std_size + 1 - vertex[1, :]
+        vertex[2, :] *= -1  # ensuring rhs coordinate system
 
     return vertex
 
