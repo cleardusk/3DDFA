@@ -20,7 +20,7 @@ By [Jianzhu Guo](http://guojianzhu.com).
  - `2019.9.15`: Some updates, see the commits for details.
  - `2019.6.17`: Adding a [video demo](./video_demo.py) contributed by [zjjMaiMai](https://github.com/zjjMaiMai).
  - `2019.5.2`: Evaluating inference speed on CPU with PyTorch v1.1.0, see [here](#CPU) and [speed_cpu.py](./speed_cpu.py).
- - `2019.4.27`: A simple render pipline running at ~25ms/frame (720p), see [rendering.py](demo@obama/rendering.py) for more details.
+ - `2019.4.27`: A simple render pipeline running at ~25ms/frame (720p), see [rendering.py](demo@obama/rendering.py) for more details.
  - `2019.4.24`: Providing the demo building of obama, see [demo@obama/readme.md](demo@obama/readme.md) for more details.
  - `2019.3.28`: Some updates.
  - `2018.12.23`: **Add several features: depth image estimation, PNCC, PAF feature and obj serialization.** See `dump_depth`, `dump_pncc`, `dump_paf`, `dump_obj` options for more details.
@@ -196,7 +196,7 @@ The training scripts lie in `training` directory. The related resources are in b
 
 | Data | Download Link | Description |
 |:-:|:-:|:-:|
-| train.configs | [BaiduYun](https://pan.baidu.com/s/1ozZVs26-xE49sF7nystrKQ) or [Google Drive](https://drive.google.com/open?id=1dzwQNZNMppFVShLYoLEfU3EOj3tCeXOD), 217M | The directory contraining 3DMM params and filelists of training dataset |
+| train.configs | [BaiduYun](https://pan.baidu.com/s/1ozZVs26-xE49sF7nystrKQ) or [Google Drive](https://drive.google.com/open?id=1dzwQNZNMppFVShLYoLEfU3EOj3tCeXOD), 217M | The directory containing 3DMM params and filelists of training dataset |
 | train_aug_120x120.zip | [BaiduYun](https://pan.baidu.com/s/19QNGst2E1pRKL7Dtx_L1MA) or [Google Drive](https://drive.google.com/open?id=17LfvBZFAeXt0ACPnVckfdrLTMHUpIQqE), 2.15G | The cropped images of augmentation training dataset |
 | test.data.zip | [BaiduYun](https://pan.baidu.com/s/1DTVGCG5k0jjjhOc8GcSLOw) or [Google Drive](https://drive.google.com/file/d/1r_ciJ1M0BSRTwndIBt42GlPFRv6CvvEP/view?usp=sharing), 151M | The cropped images of AFLW and ALFW-2000-3D testset |
 
@@ -271,7 +271,7 @@ Believe me that the framework of this repo can achieve better performance than [
 
 3. About shape and expression parameters clipping
    
-    The parameters clipping accelerates the training and reconstruction, but degrades the accuracy especially the details like closing eyes. Below is an image, with parameters dimension 40+10, 60+29 and 199+29 (the original one). Compared to shape, expression clipping has more effect on reconstruction accuracy when emotion is involved. Therefore, you can choose a tradeoff between the speed/parameter-size and the accuracy. A recommendation of clipping trade-off is 60+29.
+    The parameters clipping accelerates the training and reconstruction, but degrades the accuracy especially the details like closing eyes. Below is an image, with parameters dimension 40+10, 60+29 and 199+29 (the original one). Compared to shape, expression clipping has more effect on reconstruction accuracy when emotion is involved. Therefore, you can choose a trade-off between the speed/parameter-size and the accuracy. A recommendation of clipping trade-off is 60+29.
 
 <p align="center">
   <img src="imgs/params_clip.jpg" alt="bounding box" width="600px">
