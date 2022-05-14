@@ -13,6 +13,7 @@ By [Jianzhu Guo](http://guojianzhu.com).
 </p>
 
 **\[Updates\]**
+ - `2022.5.14`: Recommend a python implementation of face profiling: [face_pose_augmentation](https://github.com/hhj1897/face_pose_augmentation).
  - `2020.8.30`: The pre-trained model and code of ECCV-20 are made public on [3DDFA_V2](https://github.com/cleardusk/3DDFA_V2), the copyright is explained by Jianzhu Guo and the CBSR group.
  - `2020.8.2`: Update a <strong>[simple c++ port](./c++/readme.md)</strong> of this project.
  - `2020.7.3`: The extended work <strong>[Towards Fast, Accurate and Stable 3D Dense Face Alignment](https://guojianzhu.com/assets/pdfs/3162.pdf)</strong> is accepted by [ECCV 2020](https://eccv2020.eu/). See [my page](https://guojianzhu.com) for more details.
@@ -39,7 +40,7 @@ By [Jianzhu Guo](http://guojianzhu.com).
 - [x] Obj serialization with sampled texture.
 - [x] Recommendation of fast face detectors: [FaceBoxes.PyTorch](https://github.com/zisianw/FaceBoxes.PyTorch), [libfacedetection](https://github.com/ShiqiYu/libfacedetection), [ZQCNN](https://github.com/zuoqing1988/ZQCNN)
 - [x] [Training details](#Training-details)
-- [x] Face Profiling: [Official Matlab code](https://drive.google.com/open?id=1f4686yak4lGHLD6MfIiX5knVtq8a762d) <!--(http://www.cbsr.ia.ac.cn/users/xiangyuzhu/projects/3DDFA/Code/FaceProfilingRelease_v1.1.zip) -->
+- [x] Face Profiling: [Official Matlab code](https://drive.google.com/open?id=1f4686yak4lGHLD6MfIiX5knVtq8a762d), [Python version](https://github.com/hhj1897/face_pose_augmentation) <!--(http://www.cbsr.ia.ac.cn/users/xiangyuzhu/projects/3DDFA/Code/FaceProfilingRelease_v1.1.zip) -->
 
 ## Introduction
 This repo holds the pytorch improved version of the paper: [Face Alignment in Full Pose Range: A 3D Total Solution](https://arxiv.org/abs/1804.01005). Several works beyond the original paper are added, including the real-time training, training strategies. Therefore, this repo is an improved version of the original work. As far, this repo releases the pre-trained first-stage pytorch models of MobileNet-V1 structure, the pre-processed training&testing dataset and codebase. Note that the inference time is about **0.27ms per image** (input batch with 128 images as an input batch) on GeForce GTX TITAN X.
